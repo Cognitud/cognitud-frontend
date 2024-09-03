@@ -3,27 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
 }
 
 @layer utilities {
@@ -31,3 +26,35 @@ body {
     text-wrap: balance;
   }
 }
+
+form > div {
+  @apply flex flex-col gap-2;
+}
+
+input,
+textarea {
+  @apply shadow-md px-6 py-2 border border-slate-300;
+}
+
+@layer components {
+  .custom-h1 {
+    @apply text-3xl sm:text-h1-sm md:text-h1-md lg:text-h1-lg 2xl:text-h1-2xl;
+  }
+  .custom-h2 {
+    @apply text-2xl sm:text-h2-sm md:text-h2-md lg:text-h2-lg 2xl:text-h2-2xl;
+  }
+  .custom-h3 {
+    @apply text-xl sm:text-h3-sm md:text-h3-md lg:text-h3-lg 2xl:text-h3-2xl;
+  }
+  .custom-h4 {
+    @apply text-lg sm:text-h4-sm md:text-h4-md lg:text-h4-lg 2xl:text-h4-2xl;
+  }
+  .custom-h5 {
+    @apply text-base sm:text-h5-sm md:text-h5-md lg:text-h5-lg 2xl:text-h5-2xl;
+  }
+  .custom-h6 {
+    @apply text-sm sm:text-h6-sm md:text-h6-md lg:text-h6-lg 2xl:text-h6-2xl;
+  }
+}
+
+/* End of global.css */
