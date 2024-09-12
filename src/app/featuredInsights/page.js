@@ -1,24 +1,22 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
-
+import Image from "next/image";
+import Shimmer from "@/components/ShimmerUI"; // Import the shimmer component
+import Link from "next/link";
 const FeaturedInsights = () => {
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch the data from your API or data source
     const fetchInsights = async () => {
       try {
         const response = await fetch("/api/featuredInsights");
         if (response.ok) {
           const data = await response.json();
-          // Filter insights by type "Featured Insights" and sort by date to get the latest 3
           const filteredInsights = data
-            .filter(insight => insight.type === "Featured Insights")
-            .sort((a, b) => new Date(b.date) - new Date(a.date)) // Assuming `date` is the field for publication date
-            .slice(0, 3); // Get only the latest 3 insights
+            .filter((insight) => insight.type === "Featured Insights")
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 4);
           setInsights(filteredInsights);
         } else {
           setError("Failed to fetch insights");
@@ -36,8 +34,18 @@ const FeaturedInsights = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-full">
-        <div className="text-lg text-bluePrimary font-pops">Loading...</div>
+      <div className="feature-insights my-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="heading w-full lg:w-[60%] mb-10">
+            <h2 className="custom-h3 font-semibold text-bluePrimary font-mont">
+              INSIGHTS
+            </h2>
+            <h3 className="custom-h4 font-medium font-mont pt-4">
+              Explore ways to future-proof businesses
+            </h3>
+          </div>
+          <Shimmer />
+        </div>
       </div>
     );
   }
@@ -51,50 +59,53 @@ const FeaturedInsights = () => {
   }
 
   return (
-    <div className="feature-insights my-40">
+    <div className="feature-insights my-20">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="heading w-full lg:w-[60%] mb-10">
-          <h4 className="custom-h4 font-semibold text-bluePrimary font-pops">
-            Spotlight
-          </h4>
-          <h2 className="custom-h2 text-3xl lg:text-4xl font-medium font-pops pt-4">
-            Explore the ideas that are shaping the future of business
+          <h2 className="custom-h3 font-semibold text-bluePrimary font-mont">
+            INSIGHTS
           </h2>
+          <h3 className="custom-h4 font-medium font-mont pt-4">
+            Explore ways to future-proof businesses
+          </h3>
         </div>
 
-        <div className="insights-item my-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="insights-item my-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {insights.map((insight, index) => (
               <div
                 key={index}
-                className="item bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
+                className="item bg-white shadow-lg overflow-hidden flex flex-col justify-between gap-6 hover:scale-105 transition-transform duration-300 ease-in-out"
               >
                 <div className="insight-image">
                   <img
                     src={insight.image}
                     alt={insight.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-62 object-cover"
                   />
                 </div>
-                <div className="category px-4 py-2 bg-blue-100">
-                  <h4 className="text-bluePrimary text-sm font-semibold uppercase font-pops">
+                <div className="category px-4">
+                  <h6 className="text-[#919191] text-sm font-medium uppercase font-mont">
+                    THIS WEEK IN{" "}
                     {insight.category ? insight.category : "No category"}
-                  </h4>
+                  </h6>
                 </div>
-                <div className="content px-4 py-4">
-                  <h4 className="text-lg font-semibold font-pops">
+                <div className="content px-4 flex">
+                  <h5 className="text-p font-medium font-mont text-[#919191] news-title">
                     {insight.title}
-                  </h4>
+                  </h5>
                 </div>
-                <div className="read-more-btn px-4 py-4 flex items-center gap-4">
-                  <button className="font-semibold text-bluePrimary font-pops">
+                <div className="read-more-btn px-4 pb-6 flex items-center gap-4 ">
+                  <button className="font-semibold text-bluePrimary font-pops text-p">
                     Read More
                   </button>
                   <div className="image">
-                    <img
-                      src="/assets/icon/right.png"
-                      alt="right-arrow"
-                      className="object-cover"
+                    <Image
+                      src="/assets/icon/arrow-blue-link.svg"
+                      alt="Read More"
+                      width={24}
+                      height={24}
+                      className="w-[24px] h-[24px] object-cover"
                     />
                   </div>
                 </div>
@@ -104,7 +115,22 @@ const FeaturedInsights = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <button className="font-semibold text-bluePrimary font-pops border-bluePrimary border p-4">View All insights</button>
+        <Link href="/insights">
+          <div className="flex items-center justify-between gap-8 p-4 border border-blueBorder">
+
+              <button className="font-semibold text-blueBorder font-pops">
+                View All
+              </button>
+              <Image
+                src="/assets/icon/arrow-blue-link.svg"
+                alt="Read More"
+                width={24}
+                height={24}
+                className="w-[24px] h-[24px] object-cover"
+              />
+
+          </div>
+          </Link>
         </div>
       </div>
     </div>

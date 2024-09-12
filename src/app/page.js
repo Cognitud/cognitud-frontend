@@ -7,36 +7,36 @@ import ParallaxComponent from "@/components/ParallaxComponent";
 import HomeAboutUs from "@/components/HomeAboutUs";
 import LatestNews from "./latestNews/page";
 import HomeCareer from "@/components/HomeCareer";
+import Footer from "@/components/Footer";
 
 const images = [
   {
     url: "/assets/banners/cognitud-slider-1.jpg",
-    heading: `Responsible growth and 
-environmental excellence`,
+    heading: `Making Businesses Transparent with ESG Reporting`,
     redirectUrl: "/projects",
     buttonText: "Read More", // Button text for the first image
   },
   {
     url: "/assets/banners/cognitud-slider-2.jpg",
-    heading: "",
+    heading: "Seeking Leadership Excellence through Precision Search",
     redirectUrl: "/services",
     buttonText: "Read More", // Button text for the second image
   },
   {
     url: "/assets/banners/cognitud-slider-3.jpg",
-    heading: "",
+    heading: "Clean Energy Solutions for a Greener Tomorrow",
     redirectUrl: "/services",
     buttonText: "Read More", // Button text for the third image
   },
   {
     url: "/assets/banners/cognitud-slider-4.jpg",
-    heading: "",
+    heading: "Taking the Climate Charge with the Net Zero Path",
     redirectUrl: "/services",
     buttonText: "Read More", // Button text for the third image
   },
   {
     url: "/assets/banners/cognitud-slider-5.jpg",
-    heading: "",
+    heading: "Promoting circular economy principles",
     redirectUrl: "/services",
     buttonText: "Read More", // Button text for the third image
   },
@@ -54,4 +54,3 @@ export default function Home() {
     </main>
   );
 }
-  

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
@@ -42,9 +42,9 @@ const Header = () => {
   const links = [
     { id: 1, link: "home", url: "/" },
     { id: 2, link: "solutions", url: "/" },
-    { id: 3, link: "insights", url: "/services" },
-    { id: 4, link: "careers", url: "/projects" },
-    { id: 5, link: "about us", url: "/careers" },
+    { id: 3, link: "insights", url: "/insights" },
+    { id: 4, link: "careers", url: "/careers" },
+    { id: 5, link: "about us", url: "/about-us" },
     { id: 6, link: "contact", url: "/contact" },
   ];
 
@@ -52,14 +52,12 @@ const Header = () => {
     setNav((prevNav) => !prevNav);
   };
 
+  const isInsightsPage = pathname === "/insights" || pathname.startsWith("/insights/");
+
   return (
     <div
       className={`header z-50 fixed top-0 left-0 w-full transition-all duration-300 ${
-        pathname === "/careers" ||
-        pathname === "/contact" ||
-        pathname === "/piping-design-engineer" ||
-        pathname === "/project-site-engineer" ||
-        pathname === "/ibr-welder"
+        isInsightsPage
           ? "bg-white shadow-lg"
           : scrolled
           ? "bg-white shadow-xl"
@@ -68,39 +66,29 @@ const Header = () => {
     >
       <div className="container flex justify-between items-center h-[100px]">
         <div className="w-[130px] custom-h1 font-bold">
-
-            <Link href="/">
-              <Image
-                src={
-                  pathname === "/careers" ||
-                  pathname === "/contact" ||
-                  pathname === "/piping-design-engineer" ||
-                  pathname === "/project-site-engineer" ||
-                  pathname === "/ibr-welder"
-                    ? "/assets/logo/cognitud-logo.png"
-                    : scrolled
-                    ? "/assets/logo/cognitud-logo.png"
-                    : "/assets/logo/cognitud-white-logo.png"
-                }
-                alt="Logo"
-                width={1000}
-                height={600}
-                className="w-full cursor-pointer h-auto"
-              />
-            </Link>
-
+          <Link href="/">
+            <Image
+              src={
+                isInsightsPage
+                  ? "/assets/logo/cognitud-logo-blue.png"
+                  : scrolled
+                  ? "/assets/logo/cognitud-logo.png"
+                  : "/assets/logo/cognitud-white-logo.png"
+              }
+              alt="Logo"
+              width={1000}
+              height={600}
+              className="w-full cursor-pointer h-auto"
+            />
+          </Link>
         </div>
 
         <ul className="hidden lg:flex space-x-6 xl:space-x-12">
           {links.map(({ id, link, url }) => (
             <Link key={id} href={url} passHref>
               <li
-                className={`font-sans custom-h5 font-medium nav-links px-4 cursor-pointer capitalize hover:scale-105 hover:font-bold hover:text-green duration-200 link-underline ${
-                  pathname === "/careers" ||
-                  pathname === "/contact" ||
-                  pathname === "/piping-design-engineer" ||
-                  pathname === "/project-site-engineer" ||
-                  pathname === "/ibr-welder"
+                className={`font-sans text-p font-regular nav-links px-4 cursor-pointer capitalize hover:scale-105 hover:font-bold duration-200 link-underline ${
+                  isInsightsPage
                     ? "text-black"
                     : scrolled
                     ? "text-black"
@@ -128,11 +116,7 @@ const Header = () => {
           ) : (
             <Image
               src={
-                pathname === "/careers" ||
-                pathname === "/contact" ||
-                pathname === "/piping-design-engineer" ||
-                pathname === "/project-site-engineer" ||
-                pathname === "/ibr-welder"
+                isInsightsPage
                   ? "/assets/icon/icon-bar.png"
                   : mobileScrolled
                   ? "/assets/icon/icon-bar.png"
@@ -155,7 +139,7 @@ const Header = () => {
         >
           <div className="flex justify-between h-[100px] items-center w-full px-6">
             <Image
-              src="/assets/logo/cognitud-logo.png"
+              src="/assets/logo/cognitud-logo-blue.png"
               alt="Logo"
               width={90}
               height={90}

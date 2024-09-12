@@ -9,13 +9,13 @@ const ParallaxSection = ({ image, heading, content }) => {
       style={{ backgroundImage: `url(${image})` }}
     >
       {/* Heading positioned at the top */}
-      <h1 className="absolute top-12 text-center text-4xl md:text-6xl font-bold text-white">
+      <h1 className="absolute top-12 text-center custom-h1 font-bold  font-mont text-white">
         {heading}
       </h1>
 
       {/* Content positioned in the middle with white background */}
-      <div className="absolute bottom-24 flex items-center justify-center p-8 bg-white bg-opacity-90 rounded-lg shadow-lg mx-4 w-full max-w-4xl">
-        <p className="text-lg md:text-2xl text-gray-800">{content}</p>
+      <div className="absolute bottom-24 flex items-center justify-center p-8 bg-white bg-opacity-40 rounded-lg shadow-lg mx-4 w-full max-w-4xl">
+        <p className="custom-h6 font-medium font-mont ">{content}</p>
       </div>
     </div>
   );
@@ -27,12 +27,18 @@ const ParallaxComponent = () => {
       <ParallaxSection
         image="/assets/banners/sustainability-parallax.png"
         heading="Sustainability"
-        content="Sustainability is about meeting the needs of the present without compromising the ability of future generations to meet their own needs."
+        content="
+            We redefine business where profit and purpose go hand-in-hand. We
+            turn your bottom line into a green machine, driving eco-friendly
+            innovations with our cost-saving efficiencies. We position your
+            brand as a leader in the eco-conscious marketplace, seamlessly
+            integrating sustainability into your business operations.
+        "
       />
       <ParallaxSection
         image="/assets/banners/executive_search.jpg"
         heading="Executive Search"
-        content="Executive Search is the process of recruiting senior executives to fit the needs of an organization."
+        content="We are your orbit to navigate talent and unlock untapped potential. We do not only recruit; we encourage leadership. Our unique focus on integrating business strategy and dynamic leadership sets us apart. We are committed to optimizing your organization's performance with our meticulous approach to talent acquisition."
       />
     </div>
   );

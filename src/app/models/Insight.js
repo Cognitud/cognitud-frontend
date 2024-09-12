@@ -38,6 +38,10 @@ const InsightSchema = new mongoose.Schema({
     type: String,
     required: true // Store the URL of the PDF file
   },
+  weekday: {
+    type: String,
+    required: true, // Store the weekday name
+  },
 });
 
 export default mongoose.models.Insight || mongoose.model('Insight', InsightSchema);
