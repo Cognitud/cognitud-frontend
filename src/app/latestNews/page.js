@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Shimmer from "@/components/ShimmerUI"; // Import the shimmer component
+import Link from "next/link";
 
 const LatestNews = () => {
   const [newsItems, setNewsItems] = useState([]);
@@ -11,7 +12,11 @@ const LatestNews = () => {
       try {
         const response = await fetch("/api/latestNews"); // Adjust the path as needed
         const data = await response.json();
-        setNewsItems(data);
+
+        // Filter news items by category "Features News"
+        const filteredNews = data.filter(item => item.type === "Featured News");
+
+        setNewsItems(filteredNews);
         setLoading(false); // Data fetched, stop loading
       } catch (error) {
         console.error("Failed to fetch news items:", error);
@@ -48,7 +53,7 @@ const LatestNews = () => {
             LATEST NEWS
           </h2>
           <h3 className="custom-h4 font-medium font-mont pt-4">
-          Discover the latest in sustainability
+            Discover the latest in sustainability
           </h3>
         </div>
 
@@ -70,11 +75,11 @@ const LatestNews = () => {
                   }}
                 >
                   <div className="flex items-center justify-between">
-                    <button className="bg-[#1f4e79] p-2 rounded-[22px] custom-h6 text-white">
-                      {item.category || "Category"} {/* Category field */}
+                    <button className="bg-[#1f4e79] p-2 rounded-[22px] text-sm text-white">
+                      {item.category ? item.category : "No category"}
                     </button>
                     <div className="date">
-                      <h4 className="custom-h5 font-regular font-mont">
+                      <h4 className="text-sm font-regular font-mont">
                         {new Date(item.date).toLocaleDateString()}{" "}
                         {/* Date field */}
                       </h4>
@@ -82,7 +87,7 @@ const LatestNews = () => {
                   </div>
 
                   <div className="title">
-                    <h3 className="news-title custom-h4 font-mont font-medium">
+                    <h3 className="news-title custom-h6 font-mont font-medium">
                       {item.title} {/* Title field */}
                     </h3>
                   </div>
@@ -109,19 +114,23 @@ const LatestNews = () => {
         </div>
 
         <div className="flex justify-center items-center">
+        <Link href="/news">
           <div className="flex items-center justify-between gap-8 p-4 border border-blueBorder">
-            <button className="font-semibold text-blueBorder font-pops">
-              View All
-            </button>
 
-            <Image
-              src="/assets/icon/arrow-blue-link.svg"
-              alt="Read More"
-              width={24}
-              height={24}
-              className="w-[24px] h-[24px] object-cover"
-            />
+              <button className="font-semibold text-blueBorder font-pops">
+                View All
+              </button>
+
+              <Image
+                src="/assets/icon/arrow-blue-link.svg"
+                alt="Read More"
+                width={24}
+                height={24}
+                className="w-[24px] h-[24px] object-cover"
+              />
+
           </div>
+          </Link>
         </div>
       </div>
     </div>

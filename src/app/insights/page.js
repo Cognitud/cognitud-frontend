@@ -18,7 +18,7 @@ const Insights = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTab, setSelectedTab] = useState("ALL");
-  const insightsPerPage = 10;
+  const insightsPerPage = 8;
 
   useEffect(() => {
     const fetchInsights = async () => {
@@ -69,7 +69,8 @@ const Insights = () => {
     }
   };
 
-  if (loading) return <Shimmer />; // Show shimmer effect while loading
+  // if (loading) return <Shimmer />;
+  // Show shimmer effect while loading
   if (error) return <p>Error loading insights</p>; // Display error message
 
   // Function to create rows based on the current insights
@@ -100,7 +101,7 @@ const Insights = () => {
   return (
     <>
       <div className="insight-section mt-32">
-        <div className="container px-4">
+        <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-[60%_30%] gap-16">
             <div className="heading flex flex-col gap-6 py-20">
               <h1 className="custom-h1 font-regular font-mont">Insights</h1>
@@ -113,17 +114,17 @@ const Insights = () => {
             </div>
 
             <div className="subscription-form flex flex-col justify-end gap-8">
-              <h5 className="custom-h6 font-regular font-mont">
-                Subscribe to get Guidehouse news, thought leadership and events
-                delivered to your inbox.
-              </h5>
+              <h6 className="custom-h6 font-regular font-mont">
+                Subscribe to get Cognitud Insights, thought leadership and
+                events delivered to your inbox.
+              </h6>
 
               <form className="flex flex-col gap-4">
                 <div className="input-box border-b-2 border-bluePrimary flex flex-row gap-4 justify-between items-center py-2">
                   <input
                     type="email"
                     placeholder="Your email address"
-                    className="custom-h6 p-0 placeholder-bluePrimary outline-none w-full text-bluePrimary shadow-none bg-transparent border-none box-border"
+                    className="custom-h6 p-0 placeholder-gryPrimary outline-none w-full text-bluePrimary shadow-none bg-transparent border-none box-border"
                   />
                   <button
                     type="button"
@@ -145,93 +146,103 @@ const Insights = () => {
 
           <div className="feature-insights my-20">
             <div className="heading">
-              <h3 className="custom-h3 font-mont font-regular text-bluePrimary">
+              <h3 className="custom-h3 font-mont font-medium text-bluePrimary">
                 Featured Insights
               </h3>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 my-12">
               <div className="left-column">
-                {insights.featured[0] && (
-                  <div className="relative w-full h-full">
-                    <img
-                      src={insights.featured[0].image}
-                      alt={insights.featured[0].title}
-                      className="w-full object-cover h-full"
-                    />
-                    <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                      <button className="p-1 w-[10rem] rounded-2xl border text-p">
-                        {insights.featured[0].category}
-                      </button>
-                      <div className="flex flex-col gap-8">
-                        <span className="font-mont text-sm font-semibold">
-                          {insights.featured[0].weekday} ,{" "}
-                          {new Date(
-                            insights.featured[0].date
-                          ).toLocaleDateString()}
-                        </span>
-                        <h5 className="custom-h5 font-mont font-medium">
-                          <Link
-                            href={`/insights/${createSlug(
-                              insights.featured[0].title
-                            )}`}
-                          >
-                            {insights.featured[0].title}
-                          </Link>
-                        </h5>
-                        <Link href={`/insights/${insights.featured[0].slug}`}>
-                          <div className="read-more-btn flex items-center gap-4">
-                            <button className="font-medium text-white font-pops text-p">
-                              Read More
-                            </button>
-                            <div className="image">
-                              <Image
-                                src="/assets/icon/white-top-arrow.svg"
-                                alt="Read More"
-                                width={24}
-                                height={24}
-                                className="w-[24px] h-[24px] object-cover"
-                              />
+                {loading ? (
+                  <Shimmer className="w-full h-full" />
+                ) : (
+                  insights.featured[0] && (
+                    <div className="relative w-full h-full">
+                      <img
+                        src={insights.featured[0].image}
+                        alt={insights.featured[0].title}
+                        className="w-full object-cover h-full"
+                      />
+                      <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+                        <button className="p-1 w-[10rem] rounded-2xl border text-p">
+                          {insights.featured[0].category}
+                        </button>
+                        <div className="flex flex-col gap-8">
+                          <span className="font-mont text-sm font-regular">
+                            {insights.featured[0].weekday} ,{" "}
+                            {new Date(
+                              insights.featured[0].date
+                            ).toLocaleDateString()}
+                          </span>
+                          <h5 className="custom-h5 news-title font-mont font-medium">
+                            <Link
+                              href={`/insights/${createSlug(
+                                insights.featured[0].title
+                              )}`}
+                            >
+                              {insights.featured[0].title}
+                            </Link>
+                          </h5>
+                          <Link href={`/insights/${insights.featured[0].slug}`}>
+                            <div className="read-more-btn flex items-center gap-4">
+                              <button className="font-medium text-white font-pops text-p">
+                                Read More
+                              </button>
+                              <div className="image">
+                                <Image
+                                  src="/assets/icon/white-top-arrow.svg"
+                                  alt="Read More"
+                                  width={24}
+                                  height={24}
+                                  className="w-[24px] h-[24px] object-cover"
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </Link>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )
                 )}
               </div>
 
               <div className="right-column flex flex-col gap-6">
-                {insights.featured.slice(1).map((insight) => (
-                  <div
-                    key={insight.slug} // Use slug or a unique property
-                    className="flex gap-8 flex-col lg:flex-row border-custom-blue border-b-2 pb-6"
-                  >
-                    <div className="relative flex-1">
-                      <img
-                        src={insight.image}
-                        alt={insight.title}
-                        className="w-full object-cover"
-                      />
-                      <div className="absolute top-0 p-[1rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                        <button className="p-1 w-[9rem] rounded-2xl border text-sm">
-                          {insight.category}
-                        </button>
+                {loading ? (
+                  <Shimmer className="w-full h-full" />
+                ) : (
+                  insights.featured.slice(1).map((insight, index, array) => (
+                    <div
+                      key={insight.slug}
+                      className={`flex gap-8 flex-col lg:flex-row border-custom-blue border-b-2 pb-6 ${
+                        index === array.length - 1 ? "border-b-0 pb-0" : ""
+                      }`}
+                    >
+                      <div className="relative flex-1">
+                        <img
+                          src={insight.image}
+                          alt={insight.title}
+                          className="w-full object-cover"
+                        />
+                        <div className="absolute top-0 p-[1rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+                          <button className="p-1 w-[9rem] rounded-2xl border text-xs">
+                            {insight.category}
+                          </button>
+                        </div>
+                      </div>
+                      <div className="information flex flex-col gap-6 flex-1">
+                        <span className="text-sm text-greyPrimary font-mont font-medium">
+                          {insight.weekday} ,{" "}
+                          {new Date(insight.date).toLocaleDateString()}
+                        </span>
+                        <h4 className="text-p font-mont font-regular">
+                          <Link href={`/insights/${createSlug(insight.title)}`}>
+                            {insight.title}
+                          </Link>
+                        </h4>
                       </div>
                     </div>
-                    <div className="information flex flex-col gap-6 flex-1">
-                      <span className="text-sm text-[#919191] font-mont font-medium">
-                        {insight.weekday} ,{" "}
-                        {new Date(insight.date).toLocaleDateString()}
-                      </span>
-                      <h4 className="text-p font-mont font-regular">
-                        <Link href={`/insights/${createSlug(insight.title)}`}>
-                          {insight.title}
-                        </Link>
-                      </h4>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -277,76 +288,84 @@ const Insights = () => {
             </div>
 
             {filteredInsights.length === 0 ? (
-  <div className="no-insights-found h-[400px] flex items-center justify-center text-center text-gray-600">
-    <p>No insights found for the selected category</p>
-  </div>
-) : (
-  <>
-    {rows.map((row, rowIndex) => (
-      <div
-        key={`row-${rowIndex}`}
-        className={`grid ${
-          rowIndex % 3 === 2 && row.length === 3
-            ? "lg:grid-cols-3" // Third row with 3 equal columns if row has 3 items
-            : rowIndex % 2 === 0
-            ? "lg:grid-cols-[65%_34%]" // First row with 65% and 34%
-            : "lg:grid-cols-[34%_65%]" // Second row with 34% and 65%
-        } gap-6 my-12`}
-      >
-        {row.map((insight) => (
-          <div key={insight.slug} className="relative w-full h-full">
-            <img
-              src={insight.image}
-              alt={insight.title}
-              className="w-full object-cover h-full"
-            />
-            <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-              <button className="p-1 w-[10rem] rounded-2xl border text-p">
-                {insight.category}
-              </button>
-              <div className="flex flex-col gap-8">
-                <span className="font-mont text-sm font-semibold">
-                  {insight.weekday} ,{" "}
-                  {new Date(insight.date).toLocaleDateString()}
-                </span>
-                <h5 className="custom-h5 font-mont font-medium">
-                  <Link href={`/insights/${createSlug(insight.title)}`}>
-                    {insight.title}
-                  </Link>
-                </h5>
-                <Link href={`/insights/${insight.slug}`}>
-                  <div className="read-more-btn flex items-center gap-4">
-                    <button className="font-medium text-white font-pops text-p">
-                      Read More
-                    </button>
-                    <div className="image">
-                      <Image
-                        src="/assets/icon/white-top-arrow.svg"
-                        alt="Read More"
-                        width={24}
-                        height={24}
-                        className="w-[24px] h-[24px] object-cover"
-                      />
-                    </div>
-                  </div>
-                </Link>
+              <div className="no-insights-found h-[400px] flex items-center justify-center text-center text-gray-600">
+                <p>No insights found for the selected category</p>
               </div>
-            </div>
-          </div>
-        ))}
+            ) : (
+              <>
+                {rows.map((row, rowIndex) => (
+                  <div
+                    key={`row-${rowIndex}`}
+                    className={`grid ${
+                      rowIndex % 3 === 2 && row.length === 3
+                        ? "lg:grid-cols-3" // Third row with 3 equal columns if row has 3 items
+                        : rowIndex % 2 === 0
+                        ? "lg:grid-cols-[65%_34%]" // First row with 65% and 34%
+                        : "lg:grid-cols-[34%_65%]" // Second row with 34% and 65%
+                    } gap-6 my-12`}
+                  >
+                    {row.map((insight) => (
+                      <div
+                        key={insight.slug}
+                        className="relative w-full h-full"
+                      >
+                        <img
+                          src={insight.image}
+                          alt={insight.title}
+                          className="w-full object-cover h-full"
+                        />
+                        <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+                          <button className="p-1 w-[10rem] rounded-2xl border text-p">
+                            {insight.category}
+                          </button>
+                          <div className="flex flex-col gap-8">
+                            <span className="font-mont text-sm font-semibold">
+                              {insight.weekday} ,{" "}
+                              {new Date(insight.date).toLocaleDateString()}
+                            </span>
+                            <h5 className="custom-h6 font-mont font-medium">
+                              <Link
+                                href={`/insights/${createSlug(insight.title)}`}
+                              >
+                                {insight.title}
+                              </Link>
+                            </h5>
+                            <Link href={`/insights/${insight.slug}`}>
+                              <div className="read-more-btn flex items-center gap-4">
+                                <button className="font-medium text-white font-pops text-p">
+                                  Read More
+                                </button>
+                                <div className="image">
+                                  <Image
+                                    src="/assets/icon/white-top-arrow.svg"
+                                    alt="Read More"
+                                    width={24}
+                                    height={24}
+                                    className="w-[24px] h-[24px] object-cover"
+                                  />
+                                </div>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
 
-        {/* Only add filler elements if there are fewer than 3 items in the third row */}
-        {rowIndex % 3 === 2 && row.length < 3 &&
-          Array(3 - row.length)
-            .fill(null)
-            .map((_, fillerIndex) => (
-              <div key={`filler-${fillerIndex}`} className="w-full h-full" />
-            ))}
-      </div>
-    ))}
-  </>
-)}
-
+                    {/* Only add filler elements if there are fewer than 3 items in the third row */}
+                    {rowIndex % 3 === 2 &&
+                      row.length < 3 &&
+                      Array(3 - row.length)
+                        .fill(null)
+                        .map((_, fillerIndex) => (
+                          <div
+                            key={`filler-${fillerIndex}`}
+                            className="w-full h-full"
+                          />
+                        ))}
+                  </div>
+                ))}
+              </>
+            )}
           </div>
 
           <div className="pagination flex justify-center gap-4 my-8">

@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import parse from "html-react-parser";
+import Shimmer from "@/components/ShimmerUI";// Import Shimmer component
 
 const InsightDetail = () => {
   const [insightItem, setInsightItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [recommendedInsights, setRecommendedInsights] = useState([]); // Updated: State for recommended insights
-  const { slug } = useParams(); // Get the dynamic slug from the route
+  const [recommendedInsights, setRecommendedInsights] = useState([]);
+  const { slug } = useParams();
 
-  // Fetch insight detail
   useEffect(() => {
     if (slug) {
       const fetchInsightDetail = async () => {
@@ -36,14 +36,14 @@ const InsightDetail = () => {
     }
   }, [slug]);
 
-  // Fetch recommended/featured insights
   useEffect(() => {
     const fetchRecommendedInsights = async () => {
       try {
-        const response = await fetch("/api/featuredInsights"); // Update with the correct API endpoint
+        const response = await fetch("/api/featuredInsights");
         if (response.ok) {
           const data = await response.json();
-          setRecommendedInsights(data);
+          const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+          setRecommendedInsights(sortedData.slice(0, 3));
         } else {
           setError("Failed to fetch recommended insights");
         }
@@ -56,14 +56,13 @@ const InsightDetail = () => {
     fetchRecommendedInsights();
   }, []);
 
-  // Function to add custom classes to specific tags
   const addCustomClasses = (htmlContent) => {
     return parse(htmlContent, {
       replace: (domNode) => {
         if (domNode.name === "h2") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "custom-h5 font-mont font-semibold text-bluePrimary",
+            class: "custom-h4 font-mont font-semibold text-bluePrimary",
           };
         } else if (domNode.name === "h3") {
           domNode.attribs = {
@@ -73,25 +72,25 @@ const InsightDetail = () => {
         } else if (domNode.name === "p") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "text-p font-pops font-regular",
+            class: "text-p font-mont font-regular leading-custom-32",
           };
         }
       },
     });
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Shimmer />; // Show shimmer effect while loading
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <>
       <div className="insights-detail-section mt-28">
-        <div className="flex gap-12 py-8 px-32">
+        <div className="flex gap-12 py-6 container">
           <Link href="/insights">
             <h6 className="text-xs font-pops font-regular">1. INSIGHTS</h6>
           </Link>
           <h6 className="text-xs font-pops font-semibold">
-            /2. {insightItem?.title}
+            2. {insightItem?.title}
           </h6>
         </div>
 
@@ -102,12 +101,12 @@ const InsightDetail = () => {
             className="w-full h-[22rem] lg:h-[32rem] object-cover"
           />
           <div className="absolute top-0 left-0 px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-            <h6 className="custom-h6 font-pops font-regular text-white">
+            <h6 className="custom-h6 font-mont font-regular text-white">
               {insightItem?.category}
             </h6>
-            <h1 className="custom-h4 w-[60%] font-mont font-regular mt-4">
+            <h4 className="custom-h4 w-[60%] font-mont font-regular mt-4">
               {insightItem?.title}
-            </h1>
+            </h4>
           </div>
         </div>
 
@@ -128,7 +127,7 @@ const InsightDetail = () => {
                 </h5>
                 {recommendedInsights.length > 0 ? (
                   recommendedInsights.map((insight, index) => (
-                    <div key={insight._id || index} className="relative">
+                    <div key={insight._id || index} className={`relative ${index === recommendedInsights.length - 1 ? '' : 'border-b-2 border-custom-blue'}`}>
                       <img
                         src={insight.image}
                         alt={insight.title}

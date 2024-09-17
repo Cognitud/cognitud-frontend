@@ -90,8 +90,9 @@ module.exports = {
       },
       
       lineHeight: {
-        "custom-36": "36px",
-        "custom-28": "28px",
+        "custom-36": "2.25rem",
+        "custom-32": "2rem",
+        
       },
       maxHeight: {
         0: "0",
@@ -224,6 +225,7 @@ module.exports = {
         brownMedium: "#AC733E",
         greyLight: "#BCC8D3",
         purpleMedium: "#9353A1",
+        greyPrimary: "#919191",
       },
       translate: {
         "-1/2": "-50%",

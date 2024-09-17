@@ -40,24 +40,24 @@ const Header = () => {
   }, [isMobile]);
 
   const links = [
-    { id: 1, link: "home", url: "/" },
-    { id: 2, link: "solutions", url: "/" },
+    { id: 1, link: "solutions", url: "/" },
+    { id: 2, link: "about us", url: "/about-us" },
     { id: 3, link: "insights", url: "/insights" },
-    { id: 4, link: "careers", url: "/careers" },
-    { id: 5, link: "about us", url: "/about-us" },
-    { id: 6, link: "contact", url: "/contact" },
+    { id: 4, link: "news", url: "/news" },
+    { id: 5, link: "careers", url: "/careers" },
+    { id: 6, link: "contact us", url: "/contact" },
   ];
 
   const toggleNav = () => {
     setNav((prevNav) => !prevNav);
   };
 
-  const isInsightsPage = pathname === "/insights" || pathname.startsWith("/insights/");
+  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/news" || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
 
   return (
     <div
       className={`header z-50 fixed top-0 left-0 w-full transition-all duration-300 ${
-        isInsightsPage
+        isInsightsOrNewsPage
           ? "bg-white shadow-lg"
           : scrolled
           ? "bg-white shadow-xl"
@@ -69,7 +69,7 @@ const Header = () => {
           <Link href="/">
             <Image
               src={
-                isInsightsPage
+                isInsightsOrNewsPage
                   ? "/assets/logo/cognitud-logo-blue.png"
                   : scrolled
                   ? "/assets/logo/cognitud-logo.png"
@@ -88,7 +88,7 @@ const Header = () => {
             <Link key={id} href={url} passHref>
               <li
                 className={`font-sans text-p font-regular nav-links px-4 cursor-pointer capitalize hover:scale-105 hover:font-bold duration-200 link-underline ${
-                  isInsightsPage
+                  isInsightsOrNewsPage
                     ? "text-black"
                     : scrolled
                     ? "text-black"
@@ -116,7 +116,7 @@ const Header = () => {
           ) : (
             <Image
               src={
-                isInsightsPage
+                isInsightsOrNewsPage
                   ? "/assets/icon/icon-bar.png"
                   : mobileScrolled
                   ? "/assets/icon/icon-bar.png"
