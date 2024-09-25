@@ -69,45 +69,47 @@ const ImageSlider = ({ images = [] }) => {
         </div>
 
         {/* Navigation buttons with slider line at the top */}
-        <div className="absolute bottom-1 left-[5%] w-auto grid grid-cols-5 gap-12 mt-5 space-x-4">
-          {[
-            "Sustainability Reporting",
-            "Executive Search",
-            "Renewable Energy",
-            "Climate & Net Zero",
-            "Waste Management",
-          ].map((item, index) => (
-            <button
-              key={index}
-              className={`relative navigationButton bg-none border-none cursor-pointer py-2 custom-h5 text-left inline-block ${
-                index === currentSlide
-                  ? "activeItem font-bold text-white opacity-1"
-                  : "text-greyLight"
-              }`}
-              onClick={() => goToSlide(index)}
-            >
-              {/* Slider line */}
-              <div
-                className={`absolute top-0 left-0 w-full h-[2px] bg-white transform scale-x-0 origin-left transition-transform duration-500 ${
-                  index === currentSlide ? "animate-fillLine scale-x-100" : ""
+        <div className="absolute bottom-1 left-[5%] w-[90%] overflow-x-auto lg:overflow-visible">
+          <div className="flex lg:grid lg:grid-cols-5 gap-12 mt-5 space-x-4 lg:space-x-0">
+            {[
+              "Sustainability Reporting",
+              "Executive Search",
+              "Renewable Energy",
+              "Climate & Net Zero",
+              "Waste Management",
+            ].map((item, index) => (
+              <button
+                key={index}
+                className={`relative navigationButton bg-none border-none cursor-pointer py-2 custom-h5 text-left inline-block whitespace-nowrap ${
+                  index === currentSlide
+                    ? "activeItem font-bold text-white opacity-1"
+                    : "text-greyLight"
                 }`}
-                style={{ marginBottom: "12px" }} // Gap between slider line and label
-              ></div>
-
-              {/* Label */}
-              <span
-                className={`block text-xs ${
-                  index === currentSlide ? "text-white" : "text-greyLight"
-                }`}
-                style={{ marginBottom: "12px" }} // Gap between label and button text
+                onClick={() => goToSlide(index)}
               >
-                {`0${index + 1}/05`}
-              </span>
+                {/* Slider line */}
+                <div
+                  className={`absolute top-0 left-0 w-full h-[2px] bg-white transform scale-x-0 origin-left transition-transform duration-500 ${
+                    index === currentSlide ? "animate-fillLine scale-x-100" : ""
+                  }`}
+                  style={{ marginBottom: "12px" }} // Gap between slider line and label
+                ></div>
 
-              {/* Button text */}
-              <span className="text-base font-medium font-mont">{item}</span>
-            </button>
-          ))}
+                {/* Label */}
+                <span
+                  className={`block text-xs ${
+                    index === currentSlide ? "text-white" : "text-greyLight"
+                  }`}
+                  style={{ marginBottom: "12px" }} // Gap between label and button text
+                >
+                  {`0${index + 1}/05`}
+                </span>
+
+                {/* Button text */}
+                <span className="text-base font-medium font-mont">{item}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

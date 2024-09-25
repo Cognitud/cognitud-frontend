@@ -67,3 +67,24 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.custom-list {
+  list-style-type: none; /* Remove default bullets or numbering */
+  padding-left: 0; /* Remove default padding */
+}
+
+.custom-list-item {
+  position: relative;
+}
+
+.custom-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: 50%;
+  background-color: var(--pink, #f472b6); /* Custom pink color, fallback to a pink shade */
+  border-radius: 2px; /* Rounded edges for the border */
+}
+

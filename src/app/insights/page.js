@@ -161,20 +161,20 @@ const Insights = () => {
                       <img
                         src={insights.featured[0].image}
                         alt={insights.featured[0].title}
-                        className="w-full object-cover h-full"
+                        className="w-full object-cover min-h-[224px] h-full"
                       />
-                      <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                        <button className="p-1 w-[10rem] rounded-2xl border text-p">
+                      <div className="absolute top-0 flex flex-col justify-between p-[1rem] lg:p-[2rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+                        <button className="p-[0.5rem] flex item-center justify-center  w-[8rem] rounded-2xl border text-xs">
                           {insights.featured[0].category}
                         </button>
-                        <div className="flex flex-col gap-8">
-                          <span className="font-mont text-sm font-regular">
+                        <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+                          <span className="font-mont text-xs font-regular">
                             {insights.featured[0].weekday} ,{" "}
                             {new Date(
                               insights.featured[0].date
                             ).toLocaleDateString()}
                           </span>
-                          <h5 className="custom-h5 news-title font-mont font-medium">
+                          <h5 className="custom-h6 news-title font-mont font-medium">
                             <Link
                               href={`/insights/${createSlug(
                                 insights.featured[0].title
@@ -185,7 +185,7 @@ const Insights = () => {
                           </h5>
                           <Link href={`/insights/${insights.featured[0].slug}`}>
                             <div className="read-more-btn flex items-center gap-4">
-                              <button className="font-medium text-white font-pops text-p">
+                              <button className="font-medium text-white font-pops text-sm">
                                 Read More
                               </button>
                               <div className="image">
@@ -213,7 +213,7 @@ const Insights = () => {
                   insights.featured.slice(1).map((insight, index, array) => (
                     <div
                       key={insight.slug}
-                      className={`flex gap-8 flex-col lg:flex-row border-custom-blue border-b-2 pb-6 ${
+                      className={`flex gap-8 lg:flex-row border-custom-blue border-b-2 pb-6 ${
                         index === array.length - 1 ? "border-b-0 pb-0" : ""
                       }`}
                     >
@@ -221,20 +221,20 @@ const Insights = () => {
                         <img
                           src={insight.image}
                           alt={insight.title}
-                          className="w-full object-cover"
+                          className="w-full h-full object-cover"
                         />
                         <div className="absolute top-0 p-[1rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                          <button className="p-1 w-[9rem] rounded-2xl border text-xs">
+                          <button className="p-1 w-[8rem] rounded-2xl border text-xs">
                             {insight.category}
                           </button>
                         </div>
                       </div>
                       <div className="information flex flex-col gap-6 flex-1">
-                        <span className="text-sm text-greyPrimary font-mont font-medium">
+                        <span className="text-xs text-greyPrimary font-mont font-medium">
                           {insight.weekday} ,{" "}
                           {new Date(insight.date).toLocaleDateString()}
                         </span>
-                        <h4 className="text-p font-mont font-regular">
+                        <h4 className="text-sm font-mont font-regular">
                           <Link href={`/insights/${createSlug(insight.title)}`}>
                             {insight.title}
                           </Link>
@@ -312,14 +312,14 @@ const Insights = () => {
                         <img
                           src={insight.image}
                           alt={insight.title}
-                          className="w-full object-cover h-full"
+                          className="w-full object-cover min-h-[224px] h-full"
                         />
-                        <div className="absolute top-0 flex flex-col justify-between px-[3rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                          <button className="p-1 w-[10rem] rounded-2xl border text-p">
+                        <div className="absolute top-0 flex flex-col justify-between p-[1rem] lg:p-[2rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+                          <button className="p-[0.5rem] w-[8rem] rounded-2xl border text-xs">
                             {insight.category}
                           </button>
-                          <div className="flex flex-col gap-8">
-                            <span className="font-mont text-sm font-semibold">
+                          <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
+                            <span className="font-mont text-xs font-semibold">
                               {insight.weekday} ,{" "}
                               {new Date(insight.date).toLocaleDateString()}
                             </span>
@@ -332,7 +332,7 @@ const Insights = () => {
                             </h5>
                             <Link href={`/insights/${insight.slug}`}>
                               <div className="read-more-btn flex items-center gap-4">
-                                <button className="font-medium text-white font-pops text-p">
+                                <button className="font-medium text-white font-pops text-xs">
                                   Read More
                                 </button>
                                 <div className="image">

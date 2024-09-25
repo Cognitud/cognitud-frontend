@@ -52,7 +52,7 @@ const Header = () => {
     setNav((prevNav) => !prevNav);
   };
 
-  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/news" || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
+  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/news" ||  pathname.startsWith("/job/") || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
 
   return (
     <div

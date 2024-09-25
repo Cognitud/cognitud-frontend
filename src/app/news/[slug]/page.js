@@ -90,7 +90,7 @@ const NewsDetail = () => {
   return (
     <>
       <div className="news-section-detail mt-28">
-        <div className="flex gap-12 py-6 container">
+        <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row py-6 container">
           <Link href="/news">
             <h6 className="text-xs font-pops font-regular">1. INSIGHTS</h6>
           </Link>
@@ -105,11 +105,11 @@ const NewsDetail = () => {
             alt={newsItem?.title}
             className="w-full h-[22rem] lg:h-[32rem] object-cover"
           />
-          <div className="absolute top-0 left-0 px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
+          <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
             <h6 className="custom-h6 font-mont font-regular text-white">
               {newsItem?.category}
             </h6>
-            <h4 className="custom-h4 w-[60%] font-mont font-regular mt-4">
+            <h4 className="custom-h4 w-full lg:w-[60%] font-mont font-regular mt-4">
               {newsItem?.title}
             </h4>
           </div>
