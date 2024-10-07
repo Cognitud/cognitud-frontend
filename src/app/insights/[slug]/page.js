@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import parse from "html-react-parser";
-import Shimmer from "@/components/ShimmerUI";// Import Shimmer component
+import Shimmer from "@/components/ShimmerUI"; // Import Shimmer component
 
 const InsightDetail = () => {
   const [insightItem, setInsightItem] = useState(null);
@@ -42,7 +42,9 @@ const InsightDetail = () => {
         const response = await fetch("/api/featuredInsights");
         if (response.ok) {
           const data = await response.json();
-          const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+          const sortedData = data.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+          );
           setRecommendedInsights(sortedData.slice(0, 3));
         } else {
           setError("Failed to fetch recommended insights");
@@ -62,17 +64,17 @@ const InsightDetail = () => {
         if (domNode.name === "h2") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "custom-h4 font-mont font-semibold text-bluePrimary",
+            class: "custom-h5 font-pops font-semibold text-bluePrimary",
           };
         } else if (domNode.name === "h3") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "custom-h6 font-mont font-semibold text-bluePrimary",
+            class: "custom-h6 font-pops font-semibold text-bluePrimary",
           };
         } else if (domNode.name === "p") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "text-p font-mont font-regular leading-custom-32",
+            class: "text-p font-pops font-regular leading-custom-32",
           };
         }
       },
@@ -87,9 +89,9 @@ const InsightDetail = () => {
       <div className="insights-detail-section mt-28">
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row py-6 container">
           <Link href="/insights">
-            <h6 className="text-xs font-pops font-regular">1. INSIGHTS</h6>
+            <h6 className="text-sm font-pops font-regular">1. INSIGHTS</h6>
           </Link>
-          <h6 className="text-xs font-pops font-semibold">
+          <h6 className="text-sm font-pops font-semibold">
             2. {insightItem?.title}
           </h6>
         </div>
@@ -115,36 +117,43 @@ const InsightDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-12">
               <div className="content-details">
                 {insightItem?.content && (
-                  <div className="content text-gray-800">
+                  <div className="content">
                     {addCustomClasses(insightItem.content)}
                   </div>
                 )}
               </div>
 
               <div className="recommended-insights flex flex-col gap-4">
-                <h5 className="custom-h5 font-semibold text-bluePrimary">
+                <h5 className="custom-h4 font-mont font-medium text-bluePrimary">
                   Recommended Insights
                 </h5>
                 {recommendedInsights.length > 0 ? (
                   recommendedInsights.map((insight, index) => (
-                    <div key={insight._id || index} className={`relative ${index === recommendedInsights.length - 1 ? '' : 'border-b-2 border-custom-blue'}`}>
+                    <div
+                      key={insight._id || index}
+                      className={`relative ${
+                        index === recommendedInsights.length - 1
+                          ? ""
+                          : "border-b-2 border-custom-blue"
+                      }`}
+                    >
                       <img
                         src={insight.image}
                         alt={insight.title}
                         className="w-full h-[263px] object-cover"
                       />
-                      <div className="absolute top-0 py-12 px-4 flex flex-col justify-between h-full w-full bg-gradient-to-t from-black to-transparent">
+                      <div className="absolute top-0 py-6 px-4 flex flex-col justify-between h-full w-full bg-gradient-to-t from-black to-transparent">
                         <div className="flex justify-between items-center">
-                          <button className="p-2 rounded-2xl border text-xs text-white">
+                          <button className="p-2 rounded-2xl border text-sm font-pops text-white">
                             {insight.category}
                           </button>
-                          <span className="text-white">
+                          <span className="text-white text-sm font-pops">
                             {insight.weekday} ,{" "}
                             {new Date(insight.date).toLocaleDateString()}
                           </span>
                         </div>
                         <div className="title">
-                          <h4 className="text-p text-white font-mont font-medium">
+                          <h4 className="text-p text-white font-pops font-medium">
                             <Link href={`/insights/${insight.slug}`}>
                               {insight.title}
                             </Link>

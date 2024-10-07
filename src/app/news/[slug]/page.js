@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import parse from "html-react-parser";
 import Shimmer from "@/components/ShimmerUI";
 
@@ -67,17 +68,17 @@ const NewsDetail = () => {
         if (domNode.name === "h2") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "custom-h4 font-mont font-semibold text-bluePrimary",
+            class: "custom-h5 font-pops font-semibold text-bluePrimary",
           };
         } else if (domNode.name === "h3") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "custom-h6 font-mont font-semibold text-bluePrimary",
+            class: "custom-h6 font-pops font-semibold text-bluePrimary",
           };
         } else if (domNode.name === "p") {
           domNode.attribs = {
             ...domNode.attribs,
-            class: "text-p font-mont font-regular leading-custom-32",
+            class: "text-p font-pops font-regular leading-custom-32",
           };
         }
       },
@@ -92,18 +93,20 @@ const NewsDetail = () => {
       <div className="news-section-detail mt-28">
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row py-6 container">
           <Link href="/news">
-            <h6 className="text-xs font-pops font-regular">1. INSIGHTS</h6>
+            <h6 className="text-sm font-pops font-regular">1. INSIGHTS</h6>
           </Link>
-          <h6 className="text-xs font-pops font-semibold">
+          <h6 className="text-sm font-pops font-semibold">
             2. {newsItem?.title}
           </h6>
         </div>
 
         <div className="relative banner-image">
-          <img
+          <Image
             src={newsItem?.image}
             alt={newsItem?.title}
             className="w-full h-[22rem] lg:h-[32rem] object-cover"
+            width={1000}
+            height={600}
           />
           <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
             <h6 className="custom-h6 font-mont font-regular text-white">
@@ -120,7 +123,7 @@ const NewsDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] gap-12">
               <div className="content-details">
                 {newsItem?.content && (
-                  <div className="content text-gray-800">
+                  <div className="content">
                     {addCustomClasses(newsItem.content)}
                   </div>
                 )}
@@ -132,7 +135,7 @@ const NewsDetail = () => {
                       href={newsItem.pdf} // Use the PDF URL stored in the database
                       target="_blank" // Open in a new tab
                       rel="noopener noreferrer" // Security best practice
-                      className="text-bluePrimary font-semibold underline custom-h6 font-mont"
+                      className="text-bluePrimary font-medium underline custom-h6 font-pops"
                     >
                       Download PDF
                     </a>
@@ -141,7 +144,7 @@ const NewsDetail = () => {
               </div>
 
               <div className="recommended-news flex flex-col gap-4">
-                <h5 className="custom-h5 font-semibold text-bluePrimary">
+                <h5 className="custom-h4 font-mont font-medium text-bluePrimary">
                   Latest News
                 </h5>
                 <div className="flex flex-col gap-12">
@@ -149,20 +152,22 @@ const NewsDetail = () => {
                   {latestNews.map((item) => (
                     <div key={item._id} className="flex flex-col gap-6 mb-12">
                       <div className="relative image">
-                        <img
+                        <Image
                           src={item.image} // Assuming the news item has an image URL field
                           alt={item.title}
                           className="w-full h-[240px] object-cover"
+                          width={1000}
+                          height={600}
                         />
                         <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                          <button className="p-1 w-[10rem] rounded-2xl border font-mont text-sm font-medium">
+                          <button className="p-1 w-[10rem] rounded-2xl border font-pops text-sm font-medium">
                             {item.category ? item.category : "No category"}
                           </button>
                         </div>
                       </div>
                       <div className="flex gap-6 flex-col">
                         <div className="data">
-                          <span className="font-mont text-sm font-medium">
+                          <span className="font-mont text-sm font-pops font-medium">
                             {" "}
                             {item.weekday} ,{" "}
                             {new Date(item.date).toLocaleDateString()}
@@ -170,7 +175,7 @@ const NewsDetail = () => {
                         </div>
                         <div className="title news-title">
                           <Link href={`/news/${item.slug}`}>
-                            <h5 className="custom-h6 font-mont font-medium">
+                            <h5 className="text-p  font-pops font-medium">
                               {item.title}
                             </h5>
                           </Link>

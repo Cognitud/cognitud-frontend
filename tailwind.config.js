@@ -32,63 +32,62 @@ module.exports = {
         "2xl": "1536px",
       },
       fontSize: {
-        "h1-2xl": "4.5rem",  // 72px
-        "h1-xl": "4rem",     // 64px
-        "h1-lg": "3.5rem",   // 56px
-        "h1-md": "3rem",     // 48px
-        "h1-sm": "2.75rem",  // 44px
-        "h1-xs": "2.5rem",   // 40px
+        "h1-2xl": "3rem",     // 48px
+        "h1-xl": "2.75rem",   // 44px
+        "h1-lg": "2.5rem",    // 40px
+        "h1-md": "2.25rem",   // 36px
+        "h1-sm": "2rem",      // 32px
+        "h1-xs": "1.75rem",   // 28px
       
-        "h2-2xl": "4rem",    // 64px
-        "h2-xl": "3.5rem",   // 56px
-        "h2-lg": "3rem",     // 48px
-        "h2-md": "2.75rem",  // 44px
-        "h2-sm": "2.5rem",   // 40px
-        "h2-xs": "2.25rem",  // 36px
+        "h2-2xl": "2.75rem",  // 44px
+        "h2-xl": "2.5rem",    // 40px
+        "h2-lg": "2.25rem",   // 36px
+        "h2-md": "2rem",      // 32px
+        "h2-sm": "1.75rem",   // 28px
+        "h2-xs": "1.5rem",    // 24px
       
-        "h3-2xl": "3.5rem",  // 56px
-        "h3-xl": "3rem",     // 48px
-        "h3-lg": "2.75rem",  // 44px
-        "h3-md": "2.5rem",   // 40px
-        "h3-sm": "2.25rem",  // 36px
-        "h3-xs": "2rem",     // 32px
+        "h3-2xl": "2.5rem",   // 40px
+        "h3-xl": "2.25rem",   // 36px
+        "h3-lg": "2rem",      // 32px
+        "h3-md": "1.75rem",   // 28px
+        "h3-sm": "1.5rem",    // 24px
+        "h3-xs": "1.375rem",  // 22px
       
-        "h4-2xl": "2.75rem", // 44px
-        "h4-xl": "2.5rem",   // 40px
-        "h4-lg": "2.25rem",  // 36px
-        "h4-md": "2rem",     // 32px
-        "h4-sm": "1.875rem", // 30px
-        "h4-xs": "1.75rem",  // 28px
+        "h4-2xl": "2.25rem",  // 36px
+        "h4-xl": "2rem",      // 32px
+        "h4-lg": "1.75rem",   // 28px
+        "h4-md": "1.5rem",    // 24px
+        "h4-sm": "1.375rem",  // 22px
+        "h4-xs": "1.25rem",   // 20px
       
-        "h5-2xl": "2rem",    // 32px
-        "h5-xl": "1.875rem", // 30px
-        "h5-lg": "1.75rem",  // 28px
-        "h5-md": "1.625rem", // 26px
-        "h5-sm": "1.5rem",   // 24px
-        "h5-xs": "1.375rem", // 22px
+        "h5-2xl": "1.75rem",  // 28px
+        "h5-xl": "1.625rem",  // 26px
+        "h5-lg": "1.5rem",    // 24px
+        "h5-md": "1.375rem",  // 22px
+        "h5-sm": "1.25rem",   // 20px
+        "h5-xs": "1.125rem",  // 18px
       
-        "h6-2xl": "1.5rem",  // 24px
-        "h6-xl": "1.375rem", // 22px
-        "h6-lg": "1.25rem",  // 20px
-        "h6-md": "1.125rem", // 18px
-        "h6-sm": "1rem",     // 16px
-        "h6-xs": "0.9375rem", // 15px
-
-        p: "1.125rem",       // New size for <p> tag, 18px
+        "h6-2xl": "1.375rem", // 22px
+        "h6-xl": "1.25rem",   // 20px
+        "h6-lg": "1.125rem",  // 18px
+        "h6-md": "1rem",      // 16px
+        "h6-sm": "0.875rem",  // 14px
+        "h6-xs": "0.75rem",   // 12px
       
-        xs: "0.875rem",     // 14px
-        sm: "1rem",         // 16px
-        base: "1.125rem",   // 18px
-        lg: "1.25rem",      // 20px
-        xl: "1.5rem",       // 24px
-        "2xl": "1.875rem",  // 30px
-        "3xl": "2.25rem",   // 36px
-        "4xl": "3rem",      // 48px
-        "5xl": "3.75rem",   // 60px
-        "6xl": "4.5rem",    // 72px
-        "7xl": "5rem",      // 80px
-      },
+        p: "0.9375rem",       // 15px for paragraph text
       
+        xs: "0.75rem",        // 12px
+        sm: "0.875rem",       // 14px
+        base: "1rem",         // 16px
+        lg: "1.125rem",       // 18px
+        xl: "1.25rem",        // 20px
+        "2xl": "1.5rem",      // 24px
+        "3xl": "1.75rem",     // 28px
+        "4xl": "2.25rem",     // 36px
+        "5xl": "2.75rem",     // 44px
+        "6xl": "3.5rem",      // 56px
+        "7xl": "4rem",        // 64px
+      },      
       lineHeight: {
         "custom-36": "2.25rem",
         "custom-32": "2rem",
@@ -213,8 +212,9 @@ module.exports = {
       },
       colors: {
         bluePrimary: "#1f4e79",
-        blueMedium: "#3D5EAB",
+        blueMedium: "#2a5f8f",
         blueBorder: "#002B52",
+        lightBlue:'rgba(238, 242, 245, 1)',
         blueDark: "#1D507A",
         blueDarker: "#053D5D",
         greenLight: "#62B246",

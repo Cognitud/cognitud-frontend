@@ -24,7 +24,7 @@ const Job = () => {
         {/* Content Section */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-24 z-10">
           <div className="flex flex-col gap-2">
-            <h1 className="text-white font-mont text-4xl">
+            <h1 className="text-white custom-h1 font-regular font-mont">
               Career At Cognitud
             </h1>
           </div>
@@ -40,18 +40,18 @@ const Job = () => {
                 className="border border-greyPrimary w-full h-auto p-6 flex flex-col gap-8"
                 key={job.id}
               >
-                <button className="py-2 px-4 border border-bluePrimary text-sm w-[10rem] flex justify-center items-center ">
+                <button className="py-2 px-4 border border-bluePrimary text-sm  font-pops w-[10rem] flex justify-center items-center ">
                   {job.category}
                 </button>
 
                 {/* Wrap the job title with Link */}
                 <Link href={`/job/${job.slug}`}>
-                  <h4 className="custom-h6 font-mont text-bluePrimary cursor-pointer">
+                  <h4 className="custom-h4 font-pops font-medium text-bluePrimary cursor-pointer">
                     {job.title}
                   </h4>
                 </Link>
 
-                <h6 className="text-sm font-mont">{job.jobOverview}</h6>
+                <p className="text-p font-pops">{job.jobOverview}</p>
 
                 <div className="flex gap-6 items-center">
                   <Image
@@ -61,7 +61,7 @@ const Job = () => {
                     height={30}
                     className="w-auto h-auto"
                   />
-                  <h6 className="text-sm font-mont text-bluePrimary font-semibold">
+                  <h6 className="text-sm font-pops text-bluePrimary font-medium">
                     {job.locations.join(" | ")}
                   </h6>
                 </div>

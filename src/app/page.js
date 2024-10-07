@@ -8,6 +8,7 @@ import HomeAboutUs from "@/components/HomeAboutUs";
 import LatestNews from "./latestNews/page";
 import HomeCareer from "@/components/HomeCareer";
 import Footer from "@/components/Footer";
+import HomeServices from "@/components/HomeServices";
 
 const images = [
   {
@@ -47,7 +48,7 @@ export default function Home() {
     <main className="">
       <ImageSlider images={images} />
       <FeaturedInsights />
-      <ParallaxComponent />
+      <HomeServices />
       <HomeAboutUs />
       <LatestNews />
       <HomeCareer />

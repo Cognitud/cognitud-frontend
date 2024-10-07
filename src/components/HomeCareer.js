@@ -19,7 +19,7 @@ const HomeCareer = () => {
               height={600}
               className="w-full h-full object-cover"
             />
-            <h3 className="absolute text-white custom-h6 font-mont font-medium bottom-10 left-12">
+            <h3 className="absolute text-white text-p font-pops font-medium bottom-10 left-12">
               Create a legacy in an organization with limitless possibilities!
             </h3>
           </div>

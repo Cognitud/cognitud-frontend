@@ -20,6 +20,52 @@ const Insights = () => {
   const [selectedTab, setSelectedTab] = useState("ALL");
   const insightsPerPage = 8;
 
+  // Subscription state and logic
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await res.json();
+
+      if (data.msg && data.msg.length > 0) {
+        // Check for error messages from the API
+        setMessage(data.msg.join(". "));
+      } else if (data.success) {
+        setMessage(data.msg.join(". "));
+        setEmail(""); // Clear email input on successful subscription
+        setShowSuccess(true); // Show success message
+        setIsModalOpen(true); // Open the modal
+
+        // Show modal and reload the page on modal close
+        setTimeout(() => {
+          setIsModalOpen(false);
+          window.location.reload(); // Reload the page after closing
+        }, 3000); // Reload after 3 seconds
+      } else {
+        setMessage("Failed to subscribe. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      setMessage("Failed to subscribe. Please try again later.");
+    }
+  };
+
   useEffect(() => {
     const fetchInsights = async () => {
       try {
@@ -103,9 +149,9 @@ const Insights = () => {
       <div className="insight-section mt-32">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-[60%_30%] gap-16">
-            <div className="heading flex flex-col gap-6 py-20">
-              <h1 className="custom-h1 font-regular font-mont">Insights</h1>
-              <h5 className="custom-h5 font-regular font-mont">
+            <div className="heading flex flex-col gap-6  py-12">
+              <h1 className="custom-h1 font-semibold font-mont">Insights</h1>
+              <h5 className="custom-h4 font-light font-mont pt-20">
                 Deep knowledge, thoughtful analysis and our integrated
                 commercial and public sectors know-how feed our research and
                 advice. Here's how we apply our experience and foresight to
@@ -113,21 +159,24 @@ const Insights = () => {
               </h5>
             </div>
 
-            <div className="subscription-form flex flex-col justify-end gap-8">
-              <h6 className="custom-h6 font-regular font-mont">
+            <div className="subscription-form flex flex-col justify-end gap-8 ">
+              <h6 className="custom-h6 font-regular font-pops">
                 Subscribe to get Cognitud Insights, thought leadership and
                 events delivered to your inbox.
               </h6>
 
-              <form className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="input-box border-b-2 border-bluePrimary flex flex-row gap-4 justify-between items-center py-2">
                   <input
                     type="email"
                     placeholder="Your email address"
                     className="custom-h6 p-0 placeholder-gryPrimary outline-none w-full text-bluePrimary shadow-none bg-transparent border-none box-border"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                   <button
-                    type="button"
+                    type="submit"
                     className="flex justify-center items-center"
                     style={{ border: "none", background: "transparent" }}
                   >
@@ -141,12 +190,18 @@ const Insights = () => {
                   </button>
                 </div>
               </form>
+
+              {message && (
+                <p className="p-4 text-bluePrimary bg-red items-center text-center pl-4">
+                  {message}
+                </p>
+              )}
             </div>
           </div>
 
           <div className="feature-insights my-20">
             <div className="heading">
-              <h3 className="custom-h3 font-mont font-medium text-bluePrimary">
+              <h3 className="custom-h4 font-medium text-bluePrimary font-mont">
                 Featured Insights
               </h3>
             </div>
@@ -164,17 +219,17 @@ const Insights = () => {
                         className="w-full object-cover min-h-[224px] h-full"
                       />
                       <div className="absolute top-0 flex flex-col justify-between p-[1rem] lg:p-[2rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                        <button className="p-[0.5rem] flex item-center justify-center  w-[8rem] rounded-2xl border text-xs">
+                        <button className="p-[0.5rem] flex item-center justify-center  w-[8rem] rounded-2xl border text-sm">
                           {insights.featured[0].category}
                         </button>
                         <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
-                          <span className="font-mont text-xs font-regular">
+                          <span className="font-mont font-pops font-regular">
                             {insights.featured[0].weekday} ,{" "}
                             {new Date(
                               insights.featured[0].date
                             ).toLocaleDateString()}
                           </span>
-                          <h5 className="custom-h6 news-title font-mont font-medium">
+                          <h5 className="custom-h6 news-title font-pops font-medium">
                             <Link
                               href={`/insights/${createSlug(
                                 insights.featured[0].title
@@ -206,15 +261,17 @@ const Insights = () => {
                 )}
               </div>
 
-              <div className="right-column flex flex-col gap-6">
+              <div className="right-column flex flex-col justify-between gap-6">
                 {loading ? (
                   <Shimmer className="w-full h-full" />
                 ) : (
                   insights.featured.slice(1).map((insight, index, array) => (
                     <div
                       key={insight.slug}
-                      className={`flex gap-8 lg:flex-row border-custom-blue border-b-2 pb-6 ${
-                        index === array.length - 1 ? "border-b-0 pb-0" : ""
+                      className={`flex gap-8 lg:flex-row  pb-0 ${
+                        index !== array.length - 1
+                          ? "border-custom-blue border-b-2 pb-6"
+                          : ""
                       }`}
                     >
                       <div className="relative flex-1">
@@ -224,17 +281,17 @@ const Insights = () => {
                           className="w-full h-full object-cover"
                         />
                         <div className="absolute top-0 p-[1rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                          <button className="p-1 w-[8rem] rounded-2xl border text-xs">
+                          <button className="p-1 w-[8rem] rounded-2xl border text-xs font-pops">
                             {insight.category}
                           </button>
                         </div>
                       </div>
                       <div className="information flex flex-col gap-6 flex-1">
-                        <span className="text-xs text-greyPrimary font-mont font-medium">
-                          {insight.weekday} ,{" "}
+                        <span className="text-sm text-greyPrimary font-pops font-medium">
+                          {insight.weekday},{" "}
                           {new Date(insight.date).toLocaleDateString()}
                         </span>
-                        <h4 className="text-sm font-mont font-regular">
+                        <h4 className="text-p font-pops font-regular">
                           <Link href={`/insights/${createSlug(insight.title)}`}>
                             {insight.title}
                           </Link>
@@ -249,7 +306,7 @@ const Insights = () => {
 
           <div className="all-insights my-20">
             <div className="heading">
-              <h3 className="custom-h3 font-mont font-regular text-bluePrimary">
+              <h3 className="custom-h4 font-medium text-bluePrimary font-mont">
                 Insights to explore
               </h3>
             </div>
@@ -257,7 +314,7 @@ const Insights = () => {
             <div className="tabs flex items-center gap-12 my-12">
               <button
                 onClick={() => setSelectedTab("ALL")}
-                className={`tab-button text-p border-b-2 ${
+                className={`tab-button custom-h6 border-b-2 font-pops ${
                   selectedTab === "ALL"
                     ? "border-bluePrimary"
                     : "border-transparent"
@@ -267,7 +324,7 @@ const Insights = () => {
               </button>
               <button
                 onClick={() => setSelectedTab("Sustainability")}
-                className={`tab-button text-p border-b-2 ${
+                className={`tab-button custom-h6 border-b-2 font-pops ${
                   selectedTab === "Sustainability"
                     ? "border-bluePrimary"
                     : "border-transparent"
@@ -277,7 +334,7 @@ const Insights = () => {
               </button>
               <button
                 onClick={() => setSelectedTab("Executive Search")}
-                className={`tab-button text-p border-b-2 ${
+                className={`tab-button custom-h6 border-b-2 font-pops ${
                   selectedTab === "Executive Search"
                     ? "border-bluePrimary"
                     : "border-transparent"
@@ -315,15 +372,15 @@ const Insights = () => {
                           className="w-full object-cover min-h-[224px] h-full"
                         />
                         <div className="absolute top-0 flex flex-col justify-between p-[1rem] lg:p-[2rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-                          <button className="p-[0.5rem] w-[8rem] rounded-2xl border text-xs">
+                          <button className="p-[0.5rem] w-[8rem] rounded-2xl border text-sm font-pops">
                             {insight.category}
                           </button>
                           <div className="flex flex-col gap-4 md:gap-6 lg:gap-8">
-                            <span className="font-mont text-xs font-semibold">
+                            <span className="font-pops text-sm font-medium">
                               {insight.weekday} ,{" "}
                               {new Date(insight.date).toLocaleDateString()}
                             </span>
-                            <h5 className="custom-h6 font-mont font-medium">
+                            <h5 className="custom-h6 font-pops font-medium">
                               <Link
                                 href={`/insights/${createSlug(insight.title)}`}
                               >
@@ -332,7 +389,7 @@ const Insights = () => {
                             </h5>
                             <Link href={`/insights/${insight.slug}`}>
                               <div className="read-more-btn flex items-center gap-4">
-                                <button className="font-medium text-white font-pops text-xs">
+                                <button className="font-medium text-white font-pops text-sm">
                                   Read More
                                 </button>
                                 <div className="image">
@@ -381,7 +438,7 @@ const Insights = () => {
                 height={24}
               />
             </button>
-            <span className="pagination-info">
+            <span className="pagination-info custom-h6 font-mons font-medium text-bluePrimar">
               {currentPage} of {totalPages}
             </span>
             <button
@@ -399,6 +456,7 @@ const Insights = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

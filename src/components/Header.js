@@ -40,8 +40,8 @@ const Header = () => {
   }, [isMobile]);
 
   const links = [
-    { id: 1, link: "solutions", url: "/" },
-    { id: 2, link: "about us", url: "/about-us" },
+    { id: 1, link: "solutions", url: "/solutions" },
+    { id: 2, link: "about us", url: "/about" },
     { id: 3, link: "insights", url: "/insights" },
     { id: 4, link: "news", url: "/news" },
     { id: 5, link: "careers", url: "/careers" },
@@ -52,7 +52,7 @@ const Header = () => {
     setNav((prevNav) => !prevNav);
   };
 
-  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/news" ||  pathname.startsWith("/job/") || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
+  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/about" || pathname === "/solutions" || pathname === "/contact" || pathname === "/news" ||  pathname.startsWith("/job/") || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
 
   return (
     <div
