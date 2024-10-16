@@ -102,3 +102,63 @@ export const jobsData = [
 
   // Additional jobs can be added here
 ];
+
+
+// data.js
+
+export const solutionsData = [
+  {
+    title: "ESG Strategy & Transformation",
+    slug: "esg-strategy-transformation",
+    para: "Procurement strategies for standalone solutions or full portfolios.",
+    image: "/assets/services/esg-sustainable.jpg",
+  },
+  {
+    title: "Climate Action & Net Zero",
+    slug: "climate-action-net-zero",
+    para: "Strategies for achieving net-zero emissions and combating climate change.",
+    image: "/assets/services/climate-net-zero-banner.jpg",
+  },
+  {
+    title: "Responsible Investment",
+    slug: "responsible-investment",
+    para: "Investment strategies that prioritize ethical and sustainable practices.",
+    image: "/assets/services/ehs-management-new-banner.webp",
+  },
+  {
+    title: "Supply Chain and Operations",
+    slug: "supply-chain-and-operations",
+    para: "Optimizing supply chain processes for sustainability and efficiency.",
+    image: "/assets/services/supply-chain-banner.jpg",
+  },
+  {
+    title: "Circular Economy",
+    slug: "circular-economy",
+    para: "Strategies to minimize waste and maximize resource efficiency.",
+    image: "/assets/services/circular-economy-banner.jpg",
+  },
+  {
+    title: "Data & Digital",
+    slug: "data-and-digital",
+    para: "Leveraging technology and data for sustainable solutions.",
+    image: "/assets/services/data-and-digital-banner.webp",
+  },
+  {
+    title: "Impact Assessment",
+    slug: "impact-assessment",
+    para: "Evaluating the social and environmental impact of projects.",
+    image: "/assets/services/training-header.jpg",
+  },
+  {
+    title: "Due Diligence",
+    slug: "due-diligence",
+    para: "Thorough investigations to ensure compliance and sustainability.",
+    image: "/assets/services/product-stewardship-new-banner.webp",
+  },
+  {
+    title: "CSR",
+    slug: "csr",
+    para: "Corporate social responsibility initiatives to benefit communities.",
+    image: "/assets/services/clean-energy-procurement-banner.jpg",
+  },
+];

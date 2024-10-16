@@ -33,6 +33,34 @@ const AboutUs = () => {
             </h4>
           </div>
         </div>
+
+        <div className="about-detail-para my-20">
+          <div className="container">
+            <div className="flex items-center justify-center w-[80%] m-auto flex-col gap-6">
+              <h6 className="custom-h6 font-pops font-regular">
+                We are a group of passionate and curious minds driven by a
+                constant hunger to learn, evolve, and help our clients succeed.
+                We're not content with the status quo; we challenge conventions
+                and question assumptions, all in the pursuit of better
+                solutions.
+              </h6>
+              <h6 className="custom-h6 font-pops font-regular">
+                As bona fide business companions, we're committed, daring, and
+                always ready to explore uncharted territories alongside our
+                clients. Our core ethos revolves around execution excellence. We
+                believe in granting individuals the autonomy to harness their
+                full potential and infuse innovation with purposeful direction.
+              </h6>
+              <h6 className="custom-h6 font-pops font-regular">
+                We're grounded individuals—a diverse spectrum of hardworking
+                people committed to transparency and integrity. We take the time
+                to genuinely understand those we partner with, forging
+                connections that enable us to align with their unique needs and
+                move forward together.
+              </h6>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

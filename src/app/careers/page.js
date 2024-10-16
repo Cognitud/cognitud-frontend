@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -36,21 +36,55 @@ const benefits = [
 ];
 
 const CareerPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const testimonials = [
+    "Cognitud offers a culture of diversity and equal opportunity, where I can contribute my best knowing each and every voice matters and fuels our success.",
+    "At Cognitud, I'm empowered to create an impact while being part of a team that values diversity and innovation.",
+    "Working at Cognitud means being surrounded by passionate individuals who are driven by the collective goal of success.",
+  ];
+
+  // Function to move to the next slide
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % testimonials.length);
+  };
+
+  // Function to move to the previous slide
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) =>
+      prevSlide === 0 ? testimonials.length - 1 : prevSlide - 1
+    );
+  };
+
+  const handleLineClick = (index) => {
+    setCurrentSlide(index);
+  };
+
+  // Auto slide effect
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      nextSlide();
+    }, 5000); // Change slide every 5 seconds
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(slideInterval);
+  }, []);
+
   return (
     <>
-      <div className="career-page section relative w-full h-[100svh]">
+      <div className="career-page section w-full h-[100svh]">
         <div className="relative w-full h-full">
           <Image
             src="/assets/banners/careers-banner.jpg"
             alt="Careers Banner"
-            layout="fill"
-            objectFit="cover"
-            className="w-full h-full"
+            width={1000}
+            height={600}
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
           {/* Overlay */}
         </div>
-        <div className="absolute bottom-0 left-0 p-24 z-10">
+        {/* <div className="absolute bottom-0 left-0 p-24 z-10">
           <div className="flex flex-col gap-2">
             <h6 className="custom-h6 font-mont font-regular text-white">
               Careers
@@ -59,7 +93,7 @@ const CareerPage = () => {
               Help Guide the Future
             </h1>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="career-search-section my-20">
@@ -80,7 +114,7 @@ const CareerPage = () => {
 
             <div className="search-button">
               <Link href="/job">
-                <button className="text-p font-pops border border-black py-4 px-6">
+                <button className="text-p font-pops border border-bluePrimary text-bluePrimary hover:text-white hover:bg-bluePrimary py-4 px-6">
                   Search & Apply for Job
                 </button>
               </Link>
@@ -155,7 +189,7 @@ const CareerPage = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
               <div className="bg-blueMedium p-12 h-auto flex flex-col gap-16">
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col lg:flex-row gap-6 justify-between">
                   <div className="image">
                     <Image
                       src="/assets/icon/innovation_adaptability.svg"
@@ -165,7 +199,7 @@ const CareerPage = () => {
                       className="min-w-[3rem] h-auto object-cover"
                     />
                   </div>
-                  <div className="flex flex-col gap-6 ml-12">
+                  <div className="flex flex-col gap-6">
                     <h5 className="custom-h5 font-pops font-medium text-white">
                       Innovation and Adaptability
                     </h5>
@@ -178,7 +212,7 @@ const CareerPage = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col lg:flex-row gap-6 justify-between">
                   <div className="image">
                     <Image
                       src="/assets/icon/agile_work.svg"
@@ -188,7 +222,7 @@ const CareerPage = () => {
                       className="min-w-[3rem] h-auto object-cover"
                     />
                   </div>
-                  <div className="flex flex-col gap-6 ml-12">
+                  <div className="flex flex-col gap-6">
                     <h5 className="custom-h5 font-pops font-medium text-white">
                       Agile Work Practices
                     </h5>
@@ -201,7 +235,7 @@ const CareerPage = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col lg:flex-row gap-6 justify-between">
                   <div className="image">
                     <Image
                       src="/assets/icon/client_centric.svg"
@@ -211,7 +245,7 @@ const CareerPage = () => {
                       className="min-w-[3rem] h-auto object-cover"
                     />
                   </div>
-                  <div className="flex flex-col gap-6 ml-12">
+                  <div className="flex flex-col gap-6">
                     <h5 className="custom-h5 font-pops font-medium text-white">
                       Client-Centric Focus
                     </h5>
@@ -221,6 +255,58 @@ const CareerPage = () => {
                       always focused on delivering value and exceeding client
                       expectations.
                     </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blueMedium p-12 h-auto flex flex-col justify-between gap-16">
+                <div className="content flex flex-col gap-12">
+                  <Image
+                    src="/assets/icon/testi-bg.png"
+                    alt="Inert Comma Icon"
+                    width={42}
+                    height={42}
+                    className="w-[42px] h-auto object-cover"
+                  />
+
+                  <p className="custom-h5 font-mont py-8 wrap-nowrap text-white">
+                    {testimonials[currentSlide]}
+                  </p>
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-4 justify-between items-center">
+                  <div className="slider-arrow hidden lg:block  ">
+                    <div className="flex gap-8 items-center">
+                      <div className="cursor-pointer rounded-full w-[5rem] h-[5rem] border-white border-2 flex items-center justify-center" onClick={prevSlide}>
+                        <Image
+                          src="/assets/icon/prev-icon-white.svg"
+                          alt="left arrow"
+                          width={32}
+                          height={32}
+                          className="w-[32px] h-auto object-cover"
+                        />
+                      </div>
+                      <div className="cursor-pointer rounded-full w-[5rem] h-[5rem] border-white border-2 flex items-center justify-center"  onClick={nextSlide}>
+                        <Image
+                          src="/assets/icon/next-icon-white.svg"
+                          alt="left arrow"
+                          width={32}
+                          height={32}
+                          className="w-[32px] h-auto object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-8 items-center">
+                    {testimonials.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-[32px] h-[4px] cursor-pointer ${
+                          currentSlide === index ? "bg-blue-500" : "bg-gray-300"
+                        }`}
+                        onClick={() => handleLineClick(index)}
+                      ></div>
+                    ))}
                   </div>
                 </div>
               </div>

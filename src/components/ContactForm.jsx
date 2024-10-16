@@ -57,7 +57,7 @@ export default function ContactForm() {
 
   const renderInputField = (id, label, type = "text", placeholder) => (
     <div>
-      <label htmlFor={id} className="block mb-2 text-sm font-medium font-mont">
+      <label htmlFor={id} className="block mb-2 text-sm font-medium font-pops">
         {label}
       </label>
       <input
@@ -77,17 +77,22 @@ export default function ContactForm() {
     <section className="bg-white">
       <Toaster />
       {showSuccessPopup && <SuccessPopup onClose={handleClosePopup} />}
-      <div>
-        <h2 className="mb-4 font-mont custom-h2 font-semibold">
-          Let&#39;s Collaborate!
-        </h2>
+      <div className="">
         <form onSubmit={handleSubmit} className="space-y-8 mt-8">
           {renderInputField("fullname", "Full Name")}
-          {renderInputField("email", "Email", "email", "name@flowbite.com")}
+          {renderInputField("email", "Email", "email", "")}
           {renderInputField("companyName", "Company Name")}
-          {renderInputField("phoneNumber", "Phone Number", "tel", "Phone Number")}
+          {renderInputField(
+            "phoneNumber",
+            "Phone Number",
+            "tel",
+            "Phone Number"
+          )}
           <div className="sm:col-span-2">
-            <label htmlFor="comments" className="block mb-2 text-sm font-medium font-mont">
+            <label
+              htmlFor="comments"
+              className="block mb-2 text-sm font-medium font-pops"
+            >
               Comments
             </label>
             <textarea
@@ -103,7 +108,7 @@ export default function ContactForm() {
           </div>
           <button
             type="submit"
-            className="py-3 px-5 font-bold  rounded-lg bg-green hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="py-3 px-5 font-medium rounded-lg border border-bluePrimary text-bluePrimary hover:bg-bluePrimary hover:text-white"
             disabled={loading}
           >
             {loading ? "Sending..." : "Send message"}

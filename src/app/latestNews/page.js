@@ -51,9 +51,9 @@ const LatestNews = () => {
     <div className="latest-news my-20">
       <div className="container">
         <div className="heading mb-10">
-          <h3 className="custom-h4 font-semibold text-bluePrimary font-mont">
+          <h4 className="custom-h4 font-semibold text-bluePrimary font-mont">
             LATEST NEWS
-          </h3>
+          </h4>
           <h4 className="custom-h6 font-regular font-pops pt-4">
             Discover the latest in sustainability
           </h4>

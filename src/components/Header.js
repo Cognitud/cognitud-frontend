@@ -52,7 +52,7 @@ const Header = () => {
     setNav((prevNav) => !prevNav);
   };
 
-  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/about" || pathname === "/solutions" || pathname === "/contact" || pathname === "/news" ||  pathname.startsWith("/job/") || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/");
+  const isInsightsOrNewsPage = pathname === "/insights" || pathname === "/about" || pathname === "/solutions" || pathname === "/contact" || pathname === "/news" ||  pathname.startsWith("/job/") || pathname.startsWith("/insights/") ||  pathname.startsWith("/news/") || pathname.startsWith("/solutions/");
 
   return (
     <div
@@ -87,7 +87,7 @@ const Header = () => {
           {links.map(({ id, link, url }) => (
             <Link key={id} href={url} passHref>
               <li
-                className={`font-sans text-p font-regular nav-links px-4 cursor-pointer capitalize hover:scale-105 hover:font-bold duration-200 link-underline ${
+                className={`font-pops  text-p font-medium nav-links px-4 cursor-pointer capitalize hover:scale-105 hover:font-bold duration-200 link-underline ${
                   isInsightsOrNewsPage
                     ? "text-black"
                     : scrolled

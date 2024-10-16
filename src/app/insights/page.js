@@ -425,7 +425,7 @@ const Insights = () => {
             )}
           </div>
 
-          <div className="pagination flex justify-center gap-4 my-8">
+          <div className="pagination flex justify-center gap-8  my-8">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
@@ -434,8 +434,9 @@ const Insights = () => {
               <Image
                 src="/assets/icon/prev-arrow.svg"
                 alt="Previous"
-                width={24}
-                height={24}
+                width={32}
+                height={32}
+                className="w-[2rem] h-[2rem]"
               />
             </button>
             <span className="pagination-info custom-h6 font-mons font-medium text-bluePrimar">
@@ -449,8 +450,9 @@ const Insights = () => {
               <Image
                 src="/assets/icon/next-arrow.svg"
                 alt="Next"
-                width={24}
-                height={24}
+                width={32}
+                height={32}
+                className="w-[2rem] h-[2rem]"
               />
             </button>
           </div>

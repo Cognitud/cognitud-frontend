@@ -9,6 +9,7 @@ import LatestNews from "./latestNews/page";
 import HomeCareer from "@/components/HomeCareer";
 import Footer from "@/components/Footer";
 import HomeServices from "@/components/HomeServices";
+import Customers from "@/components/Customers";
 
 const images = [
   {
@@ -47,10 +48,12 @@ export default function Home() {
   return (
     <main className="">
       <ImageSlider images={images} />
+      <HomeAboutUs />
       <FeaturedInsights />
       <HomeServices />
-      <HomeAboutUs />
       <LatestNews />
+
+      <Customers />
       <HomeCareer />
     </main>
   );

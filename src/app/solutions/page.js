@@ -4,25 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ParallaxComponent from "@/components/ParallaxComponent";
-
-const solutionsData = [
-  {
-    title: "Sustainability",
-    image: "/assets/services/sustainbility-v2.webp",
-  },
-  {
-    title: "Sustainability",
-    image: "/assets/services/sustainbility-v2.webp",
-  },
-  {
-    title: "Sustainability",
-    image: "/assets/services/sustainbility-v2.webp",
-  },
-  {
-    title: "Sustainability",
-    image: "/assets/services/sustainbility-v2.webp",
-  },
-];
+import { solutionsData } from "@/data/data";
 
 const cognitudNumbers = [
   { number: "23,000", text: "projects worked on in FY23" },
@@ -59,7 +41,7 @@ const impactData = [
   {
     icon: "/assets/icon/long-term-visibility-icon.svg",
     title: "Long-Term Viability",
-    description: "Ensure  long-term success for generations to come.",
+    description: "Ensure long-term success for generations to come.",
   },
   {
     icon: "/assets/icon/social-harmony-icon.svg",
@@ -137,11 +119,18 @@ const Solutions = () => {
                       alt={solution.title}
                       width={1000}
                       height={600}
-                      className="w-full h-auto object-cover"
+                      className="w-full h-[12rem] object-cover"
                     />
-                    <h4 className="custom-h4 font-mont font-medium">
-                      {solution.title}
-                    </h4>
+                    <div className="info">
+                      <Link href={`/solutions/${solution.slug}`}>
+                        <h6 className="custom-h6 font-pops font-medium cursor-pointer">
+                          {solution.title}
+                        </h6>
+                      </Link>
+                      <h6 className="text-sm font-pops font-regular pt-2">
+                        {solution.para}
+                      </h6>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -149,7 +138,7 @@ const Solutions = () => {
           </div>
         </div>
 
-        <ParallaxComponent />
+        {/* <ParallaxComponent /> */}
 
         <div className="cognitud-numbers my-20">
           <div className="container">
@@ -185,58 +174,28 @@ const Solutions = () => {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-12">
-              {impactData.map((impact, index) => (
-                <div key={index} className="item flex flex-col gap-4  ">
-                  <div className="icon w-[3.5rem] h-[3.5rem] bg-bluePrimary hover:bg-transparent border border-bluePrimary flex items-center justify-center transition duration-300">
-                    <Image
-                      src={impact.icon}
-                      alt="Icon"
-                      width={32}
-                      height={32}
-                      className="w-[2.5rem] h-[2.5rem] object-cover filter hover:invert hover:sepia hover:saturate-[500%] hover:hue-rotate-[190deg]"
-                    />
-                  </div>
-
-                  <h4 className="custom-h6 font-medium font-pops">
-                    {impact.title}
-                  </h4>
-                  <p className="text-p font-pops font-regular">
-                    {impact.description}
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
+              {impactData.map((item, index) => (
+                <div
+                  key={index}
+                  className="impact-item flex flex-col gap-4 p-4 rounded-lg bg-white"
+                >
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={100}
+                    height={100}
+                    className="w-[50%]"
+                  />
+                  <h6 className="custom-h6 font-semibold font-pops text-bluePrimary">
+                    {item.title}
+                  </h6>
+                  <p className="font-regular text-black">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        <div className="solutions-insights my-20">
-  <div className="container">
-    <div className="flex flex-col lg:flex-row justify-between">
-      <div className="flex flex-col gap-6 w-full lg:w-1/2">
-        <div className="detail">
-          <h4 className="custom-h4 font-pops font-medium text-bluePrimary">
-            Insights
-          </h4>
-          <h6 className="custom-h6 font-pops font-regular pt-6">
-            Cognitud Consultants and sustainability experts take an in-depth look at the key issues facing our clients around the world.
-          </h6>
-        </div>
-      </div>
-
-      <div className="w-full lg:w-1/2 flex items-center justify-center">
-        <Image
-          src="/assets/services/insights-solutions.jpg"
-          alt="Insight Solutions"
-          width={1000}
-          height={600}
-          className="w-[440px] h-auto object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-
       </section>
     </>
   );
