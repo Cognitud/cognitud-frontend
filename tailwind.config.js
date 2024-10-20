@@ -110,7 +110,7 @@ module.exports = {
         50: "50%",
       },
       fontFamily: {
-        mont: ["montserrat", "sans-serif"],
+        // mont: ["montserrat", "sans-serif"],
         pops: ["Poppins", "sans-serif"],
         oswald: ["Oswald", "sans-serif"],
 
