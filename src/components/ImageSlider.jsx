@@ -73,10 +73,10 @@ const ImageSlider = ({ images = [] }) => {
           <div className="flex lg:grid lg:grid-cols-5 gap-12 mt-5 space-x-4 lg:space-x-0">
             {[
               "Sustainability Reporting",
-              "Executive Search",
-              "Renewable Energy",
+              "Decarbonisation Strategies",
               "Climate & Net Zero",
-              "Waste Management",
+              "Life Cycle Assessment",
+              "Executive Search",
             ].map((item, index) => (
               <button
                 key={index}

@@ -52,7 +52,6 @@ export default function Home() {
       <FeaturedInsights />
       <HomeServices />
       <LatestNews />
-
       <Customers />
       <HomeCareer />
     </main>

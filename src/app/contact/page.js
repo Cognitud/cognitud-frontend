@@ -125,29 +125,30 @@ const Contact = () => {
 
       <div className="office-locations my-28">
         <div className="container ">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 w-full m-auto lg:w-[80%]">
-            {/* Map over officeLocations array to render OfficeLocation components */}
-            {officeLocations.map((location, index) => (
-              <div
-                key={index}
-                className={`${
-                  officeLocations.length % 2 !== 0 &&
-                  index === officeLocations.length - 1
-                    ? "lg:col-span-2 flex justify-center"
-                    : ""
-                }`}
-              >
-                <OfficeLocation
-                  title={location.title}
-                  subtitle={location.subtitle}
-                  address={location.address}
-                  phoneNumbers={location.phoneNumbers}
-                  imageSrc={location.imageSrc}
-                  altText={location.altText}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 w-full">
+  {/* Map over officeLocations array to render OfficeLocation components */}
+  {officeLocations.map((location, index) => (
+    <div
+      key={index}
+      className={`${
+        officeLocations.length % 3 !== 0 &&
+        index >= officeLocations.length - 2
+          ? "lg:col-span-1 flex justify-center"
+          : ""
+      }`}
+    >
+      <OfficeLocation
+        title={location.title}
+        subtitle={location.subtitle}
+        address={location.address}
+        phoneNumbers={location.phoneNumbers}
+        imageSrc={location.imageSrc}
+        altText={location.altText}
+      />
+    </div>
+  ))}
+</div>
+
         </div>
       </div>
     </div>

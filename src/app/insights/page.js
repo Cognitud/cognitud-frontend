@@ -154,7 +154,7 @@ const Insights = () => {
               <h5 className="custom-h4 font-light font-mont pt-20">
                 Deep knowledge, thoughtful analysis and our integrated
                 commercial and public sectors know-how feed our research and
-                advice. Here's how we apply our experience and foresight to
+                advice. Here&apos;s how we apply our experience and foresight to
                 support our clients.
               </h5>
             </div>

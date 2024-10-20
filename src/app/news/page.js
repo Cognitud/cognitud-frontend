@@ -86,7 +86,7 @@ const News = () => {
             <h1 className="custom-h1 font-regular font-mont">News</h1>
             <h5 className="custom-h4 font-regular font-mont pt-20">
               Deep knowledge, thoughtful analysis, and our integrated commercial
-              and public sectors know-how feed our research and advice. Here's
+              and public sectors know-how feed our research and advice. Here&apos;s
               how we apply our experience and foresight to support our clients.
             </h5>
           </div>
@@ -190,9 +190,10 @@ const News = () => {
               filteredNewsItems.map((item) => (
                 <div key={item._id} className="flex flex-col gap-6 mb-12 border p-2">
                   <div className="relative image">
-                    <img
+                    <Image
                       src={item.image} // Assuming the news item has an image URL field
                       alt={item.title}
+                      width={1000}
                       className="w-full h-[240px] object-cover"
                     />
                     <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem]  text-white w-full h-full">

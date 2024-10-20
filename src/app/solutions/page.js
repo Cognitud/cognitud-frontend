@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ParallaxComponent from "@/components/ParallaxComponent";
 import { solutionsData } from "@/data/data";
+import styles from "./Services.module.css";
 
 const cognitudNumbers = [
   { number: "23,000", text: "projects worked on in FY23" },
@@ -68,14 +68,14 @@ const Solutions = () => {
             alt="Logo"
             width={1000}
             height={600}
-            className="w-full cursor-pointer h-[32rem] object-cover"
+            className="w-full cursor-pointer h-[32rem] object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
           />
           <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
             <h6 className="custom-h6 font-mont font-regular text-white">
               Solutions
             </h6>
             <h4 className="custom-h4 w-full lg:w-[60%] font-mont font-regular mt-4">
-              Cognitud is shaping a sustainable future with the world's leading
+              Cognitud is shaping a sustainable future with the world&apos;s leading
               organizations
             </h4>
           </div>
@@ -113,17 +113,22 @@ const Solutions = () => {
             <div className="types-sections py-12">
               <div className="grid grid-cols-1 md:grid-col-2 lg:grid-cols-3 gap-6">
                 {solutionsData.map((solution, index) => (
-                  <div key={index} className="item flex flex-col gap-6">
+                  <div
+                    key={index}
+                    className="item flex flex-col gap-6 duration-500 ease-in-out"
+                  >
                     <Image
                       src={solution.image}
                       alt={solution.title}
                       width={1000}
                       height={600}
-                      className="w-full h-[12rem] object-cover"
+                      className="w-full h-[12rem] object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
                     <div className="info">
                       <Link href={`/solutions/${solution.slug}`}>
-                        <h6 className="custom-h6 font-pops font-medium cursor-pointer">
+                        <h6
+                          className={`relative z-10 font-pops font-medium cursor-pointer ${styles.serviceHeading} `}
+                        >
                           {solution.title}
                         </h6>
                       </Link>
@@ -137,8 +142,6 @@ const Solutions = () => {
             </div>
           </div>
         </div>
-
-        {/* <ParallaxComponent /> */}
 
         <div className="cognitud-numbers my-20">
           <div className="container">
@@ -178,15 +181,17 @@ const Solutions = () => {
               {impactData.map((item, index) => (
                 <div
                   key={index}
-                  className="impact-item flex flex-col gap-4 p-4 rounded-lg bg-white"
+                  className="impact-item flex flex-col gap-4 p-4 rounded-lg"
                 >
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={100}
-                    height={100}
-                    className="w-[50%]"
-                  />
+                  <div className="impact-icon-image bg-bluePrimary w-[3rem] h-[3rem] flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      width={100}
+                      height={100}
+                      className="w-[2rem] h-[2rem]"
+                    />
+                  </div>
                   <h6 className="custom-h6 font-semibold font-pops text-bluePrimary">
                     {item.title}
                   </h6>

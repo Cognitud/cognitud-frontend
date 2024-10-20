@@ -227,7 +227,8 @@ module.exports = {
         purpleMedium: "#9353A1",
         greyPrimary: "#919191",
         grayS: "#C0C0C0",
-      },
+        lightGrey: "#BCC8D3",
+},
       translate: {
         "-1/2": "-50%",
       },

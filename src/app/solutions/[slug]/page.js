@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image"; // Ensure you import Image from Next.js
 import { solutionsData } from "@/data/data"; // Adjust the import as needed
 import Link from "next/link";
+import FeaturedInsights from "@/app/featuredInsights/page";
 
 const SolutionDetail = () => {
   const { slug } = useParams(); // Get the slug from the params
@@ -21,7 +22,7 @@ const SolutionDetail = () => {
       <div className="solution-detail-section mt-28">
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row py-6 container">
           <Link href="/news">
-            <h6 className="text-sm font-pops font-regular">Home</h6>
+            <h6 className="text-sm font-pops font-regular">1. Home</h6>
           </Link>
           <h6 className="text-sm font-pops font-semibold">
             2. {solution.slug}
@@ -41,7 +42,7 @@ const SolutionDetail = () => {
               Solutions
             </h6>
             <h4 className="custom-h4 w-full lg:w-[60%] font-mont font-regular mt-4">
-              Cognitud is shaping a sustainable future with the world's leading
+              Cognitud is shaping a sustainable future with the world&apos;s leading
               organizations
             </h4>
           </div>
@@ -67,7 +68,7 @@ const SolutionDetail = () => {
         <div className="why-business my-20">
           <div className="container">
             <div className="heading">
-              <h4 className="custom-h4 font-regular font-pops">
+              <h4 className="custom-h4 font-medium text-bluePrimary font-pops">
                 Why is Data and Digital essential for businesses?
               </h4>
             </div>
@@ -153,7 +154,7 @@ const SolutionDetail = () => {
         <div className="strategy my-20 bg-bluePrimary">
           <div className="container">
             <div className="heading py-12">
-              <h4 className="custom-h4 font-regular font-pops text-white">
+              <h4 className="custom-h4 font-medium text-white font-pops">
                 Why is Data and Digital essential for businesses?
               </h4>
             </div>
@@ -218,112 +219,81 @@ const SolutionDetail = () => {
               </h4>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-12 gap-12">
-              <div className="flex gap-4 items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Design of Process and Data Models
-                  </h3>
-                </div>
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Design of Process and Data Models
+                </h6>
               </div>
 
-              <div className="flex gap-4 items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Data Capture Automation and Digital Workflows
-                  </h3>
-                </div>
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Data Capture Automation and Digital Workflows
+                </h6>
               </div>
 
-              <div className="flex items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text ml-4">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Software Selection aligned with Requirements and Target
-                    Architecture
-                  </h3>
-                </div>
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Software Selection aligned with Requirements and Target
+                  Architecture
+                </h6>
+              </div>
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Solution Configuration and Deployment
+                </h6>
               </div>
 
-              <div className="flex gap-4 items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Solution Configuration and Deployment
-                  </h3>
-                </div>
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Automated Sustainability Reporting and Disclosure
+                </h6>
               </div>
 
-              <div className="flex gap-4 items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Automated Sustainability Reporting and Disclosure
-                  </h3>
-                </div>
-              </div>
-
-              <div className="flex items-center py-8 border-b-2 border-grayS">
-                <div className="">
-                  <Image
-                    src="/assets/icon/blue-circle.svg"
-                    alt="circle"
-                    width={32}
-                    height={32}
-                    className="cursor-pointer w-[22px] h-[22px]"
-                  />
-                </div>
-                <div className="text ml-4">
-                  <h3 className="custom-h6 font-sans font-light text-black">
-                    Advanced Data Analytics, Visualization, and Dashboard
-                  </h3>
-                </div>
+              <div className="border-t border-b border-greyPrimary py-8">
+                <h6 className="text-p text-black font-pops font-regular">
+                  Advanced Data Analytics, Visualization, and Dashboard
+                </h6>
               </div>
             </div>
           </div>
         </div>
+
+        <div className="outcomes my-20">
+          <div className="container">
+            <div className="heading">
+              <h4 className="custom-h4 font-medium text-bluePrimary font-pops">Outcomes</h4>
+            </div>
+
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="item bg-lightGrey p-4">
+                <p className="text-p font-pops font-regular">
+                  Design of Process and Data Models
+                </p>
+              </div>
+
+              <div className="item bg-lightGrey p-4">
+                <p className="text-p font-pops font-regular">
+                  Design of Process and Data Models
+                </p>
+              </div>
+
+              <div className="item bg-lightGrey p-4">
+                <p className="text-p font-pops font-regular">
+                  Design of Process and Data Models
+                </p>
+              </div>
+
+              <div className="item bg-lightGrey p-4">
+                <p className="text-p font-pops font-regular">
+                  Design of Process and Data Models
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <FeaturedInsights />
       </div>
     </>
   );

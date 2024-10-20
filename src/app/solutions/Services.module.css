@@ -1,0 +1,31 @@
+/* Services.module.css */
+.serviceHeading {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease, background-size 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .serviceHeading::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color:rgba(14, 74, 125, 0.8); /* Adjust background color as needed */
+    z-index: -1;
+    transition: width 1s ease;
+
+  }
+  
+  .serviceHeading:hover::before {
+    width: 100%;
+    color: black;
+    
+  }
+  .serviceHeading:hover{
+    color: #fff;
+    padding:.5rem;
+  }
+  

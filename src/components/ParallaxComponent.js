@@ -6,13 +6,13 @@ import React, { useState, useEffect, useRef } from "react";
 const sectionsData = [
   {
     image: "/assets/banners/sustainability-parallax.png",
-    heading: "Sustainability",
+    heading: "Our Mission",
     content:
       "We redefine business where profit and purpose go hand-in-hand. We turn your bottom line into a green machine, driving eco-friendly innovations with our cost-saving efficiencies. We position your brand as a leader in the eco-conscious marketplace, seamlessly integrating sustainability into your business operations.",
   },
   {
     image: "/assets/banners/executive_search.jpg",
-    heading: "Executive Search",
+    heading: "Our Vision",
     content:
       "We are your orbit to navigate talent and unlock untapped potential. We do not only recruit; we encourage leadership. Our unique focus on integrating business strategy and dynamic leadership sets us apart. We are committed to optimizing your organization's performance with our meticulous approach to talent acquisition.",
   },
@@ -24,7 +24,7 @@ const ParallaxSection = ({ image, heading, content }) => (
     className="parallax-section relative h-screen flex flex-col justify-center items-center bg-cover bg-fixed"
     style={{ backgroundImage: `url(${image})` }}
   >
-    <h1 className="absolute top-12 text-center custom-h1 font-bold font-mont text-white">
+    <h1 className="absolute top-12 text-center custom-h1 font-semibold font-pops text-white">
       {heading}
     </h1>
 

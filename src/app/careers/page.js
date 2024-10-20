@@ -175,7 +175,7 @@ const CareerPage = () => {
                 A growth mindset dominates our culture, encouraging employees to
                 embrace challenges as opportunities for learning and
                 development. Leadership is visionary, instilling a sense of
-                purpose and aligning the workforce with the organization's
+                purpose and aligning the workforce with the organization&apos;s
                 strategic goals.
               </h6>
 
@@ -259,7 +259,7 @@ const CareerPage = () => {
                 </div>
               </div>
 
-              <div className="bg-blueMedium p-12 h-auto flex flex-col justify-between gap-16">
+              <div className="bg-greyPrimary p-12 h-auto flex flex-col justify-between gap-16">
                 <div className="content flex flex-col gap-12">
                   <Image
                     src="/assets/icon/testi-bg.png"
