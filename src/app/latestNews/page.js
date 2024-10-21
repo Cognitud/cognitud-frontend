@@ -68,7 +68,7 @@ const LatestNews = () => {
                 <img
                   src={item.image} // Assuming the news item has an image URL field
                   alt={item.title}
-                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300 ease-in-out"
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
                 />
                 <div
                   className="news-card-content relative flex flex-col justify-between gap-6"
