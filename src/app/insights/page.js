@@ -117,7 +117,6 @@ const Insights = () => {
 
   // if (loading) return <Shimmer />;
   // Show shimmer effect while loading
-  if (error) return <p>Error loading insights</p>; // Display error message
 
   // Function to create rows based on the current insights
   const getRows = () => {
@@ -206,6 +205,11 @@ const Insights = () => {
               </h3>
             </div>
 
+            {error && (
+              <div className="flex items-center justify-center w-full h-[400px] text-center font-pops">
+                <p>{error}</p>
+              </div>
+            )}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 my-12">
               <div className="left-column">
                 {loading ? (
@@ -458,7 +462,6 @@ const Insights = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
