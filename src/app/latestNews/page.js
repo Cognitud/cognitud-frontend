@@ -8,6 +8,7 @@ import Link from "next/link";
 const LatestNews = () => {
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isHovered, setIsHovered] = useState(false); // Step 1: State for hover
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -63,21 +64,21 @@ const LatestNews = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Slice the newsItems array to show only the latest 3 items */}
             {newsItems.slice(0, 4).map((item) => (
-              <div key={item._id} className="w-full flex flex-col relative"> 
+              <div key={item._id} className="w-full flex flex-col gap-4 relative"> 
                 <img
                   src={item.image} // Assuming the news item has an image URL field
                   alt={item.title}
                   className="w-full h-full object-contain"
                 />
                 <div
-                  className="news-card-content relative  py-4 flex flex-col justify-between gap-6"
+                  className="news-card-content relative flex flex-col justify-between gap-6"
                 >
                   <div className="flex items-center justify-between">
                     <button className="text-xs text-bluePrimary font-pops">
                       {item.category ? item.category : "No category"}
                     </button>
                     <div className="date">
-                      <h4 className="text-xs font-regular font-pops">
+                      <h4 className="text-xs font-regular font-pops text-lightBlue">
                         {new Date(item.date).toLocaleDateString()}{" "}
                         {/* Date field */}
                       </h4>
@@ -85,7 +86,7 @@ const LatestNews = () => {
                   </div>
 
                   <div className="title">
-                    <h3 className="news-title custom-h6 font-pops font-medium">
+                    <h3 className="news-title text-p font-pops font-medium">
                       {item.title} {/* Title field */}
                     </h3>
                   </div>
@@ -112,22 +113,27 @@ const LatestNews = () => {
         </div>
 
         <div className="flex justify-center items-center">
-        <Link href="/news">
-          <div className="flex items-center justify-between gap-8  border p-4 border-blueBorder">
-
+          <Link href="/news">
+            <div
+              className="flex items-center justify-center gap-8 py-4  px-2 w-[10rem] border border-borderGrey text-bluePrimary hover:text-white transition duration-300 ease-in-out hover:bg-bluePrimary"
+              onMouseEnter={() => setIsHovered(true)} // Step 2: Set hover state to true
+              onMouseLeave={() => setIsHovered(false)} // Set hover state to false
+            >
               <button className="font-semibold font-pops text-sm">
                 View All
               </button>
-
               <Image
-                src="/assets/icon/arrow-blue-link.svg"
+                src={
+                  isHovered
+                    ? "/assets/icon/white-cognitud-arrow.svg" // Use white arrow when hovered
+                    : "/assets/icon/arrow-blue-link.svg" // Use blue arrow otherwise
+                }
                 alt="Read More"
                 width={24}
                 height={24}
-                className="w-[24px] h-[24px] object-cover"
+                className="w-[24px] h-[24px] object-cover transition duration-300 ease-in-out"
               />
-
-          </div>
+            </div>
           </Link>
         </div>
       </div>
