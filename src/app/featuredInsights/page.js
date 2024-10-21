@@ -89,7 +89,7 @@ const FeaturedInsights = () => {
                   />
                 </div>
                 <div className="px-[1.5rem]">
-                  <div className="content-inner relative mt-[-3rem] px-[1rem] py-[1.5rem] bg-white flex flex-col gap-4 border-b border-bluePrimary">
+                  <div className="content-inner relative mt-[-3rem] px-[1rem] py-[1.5rem] bg-white flex flex-col gap-4 border-b-2 border-borderGrey">
                     <h5 className="custom-h6 font-medium font-pops text-[#001b42] news-title">
                       {insight.title}
                     </h5>
