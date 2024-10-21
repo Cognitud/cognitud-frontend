@@ -89,7 +89,7 @@ const FeaturedInsights = () => {
                   />
                 </div>
                 <div className="px-[1.5rem]">
-                  <div className="content-inner relative mt-[-3rem] px-[1rem] py-[1.5rem] bg-white flex flex-col gap-4 border-b-2 border-borderGrey">
+                  <div className="content-inner relative mt-[-3rem] px-[1rem] py-[1.5rem] bg-white flex flex-col gap-4  group overflow-hidden">
                     <h5 className="custom-h6 font-medium font-pops text-[#001b42] news-title">
                       {insight.title}
                     </h5>
@@ -107,6 +107,8 @@ const FeaturedInsights = () => {
                         />
                       </div>
                     </div>
+                    <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-bluePrimary transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
+                    <div className="absolute left-0 right-0 bottom-0  border-b-[3px] border-borderGrey z-0"></div>
                   </div>
                 </div>
               </div>

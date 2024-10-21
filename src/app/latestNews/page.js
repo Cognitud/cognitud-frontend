@@ -64,11 +64,11 @@ const LatestNews = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Slice the newsItems array to show only the latest 3 items */}
             {newsItems.slice(0, 4).map((item) => (
-              <div key={item._id} className="w-full flex flex-col gap-4 relative hover:border hover:p-2 hover:border-bluePrimary"> 
+              <div key={item._id} className="w-full flex flex-col gap-4 relative "> 
                 <img
                   src={item.image} // Assuming the news item has an image URL field
                   alt={item.title}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-300 ease-in-out"
                 />
                 <div
                   className="news-card-content relative flex flex-col justify-between gap-6"
