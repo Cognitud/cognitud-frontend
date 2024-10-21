@@ -61,10 +61,10 @@ const LatestNews = () => {
         </div>
 
         <div className="latest-news-items my-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Slice the newsItems array to show only the latest 3 items */}
             {newsItems.slice(0, 4).map((item) => (
-              <div key={item._id} className="w-full flex flex-col gap-4 relative"> 
+              <div key={item._id} className="w-full flex flex-col gap-4 relative hover:border hover:p-2 hover:border-bluePrimary"> 
                 <img
                   src={item.image} // Assuming the news item has an image URL field
                   alt={item.title}
@@ -86,7 +86,7 @@ const LatestNews = () => {
                   </div>
 
                   <div className="title">
-                    <h3 className="news-title text-p font-pops font-medium">
+                    <h3 className="news-title text-p font-pops font-medium news-title ">
                       {item.title} {/* Title field */}
                     </h3>
                   </div>
