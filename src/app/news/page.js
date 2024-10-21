@@ -190,10 +190,11 @@ const News = () => {
               filteredNewsItems.map((item) => (
                 <div key={item._id} className="flex flex-col gap-6 mb-12 border p-2">
                   <div className="relative image">
-                    <Image
+                    <img
                       src={item.image} // Assuming the news item has an image URL field
                       alt={item.title}
-                      width={1000}
+                      // width={1000}
+                      he
                       className="w-full h-[240px] object-cover"
                     />
                     <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem]  text-white w-full h-full">
