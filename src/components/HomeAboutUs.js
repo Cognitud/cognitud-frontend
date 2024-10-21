@@ -11,7 +11,7 @@ const HomeAboutUs = () => {
             <div className=" flex flex-col gap-12  px-8">
               <div className="heading">
                 <h3 className="custom-h4 font-semibold text-bluePrimary font-mont">
-                  Who Are We
+                  Who Are We?
                 </h3>
                 <h4 className="custom-h6 font-regular font-pops pt-4">
                   Your go-to team of experts for all things green.
