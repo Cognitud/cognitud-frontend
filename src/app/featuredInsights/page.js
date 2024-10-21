@@ -73,7 +73,7 @@
             </h4>
           </div>
 
-          <div className="insights-item my-12 container">
+          <div className="insights-item my-12">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {insights.map((insight, index) => (
                 <div

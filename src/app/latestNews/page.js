@@ -49,7 +49,7 @@ const LatestNews = () => {
 
   return (
     <div className="latest-news my-20">
-      <div className="container">
+      <div className="lg:mx-8 mx-4">
         <div className="heading mb-10">
           <h4 className="custom-h4 font-semibold text-bluePrimary font-mont">
             LATEST NEWS
@@ -60,24 +60,20 @@ const LatestNews = () => {
         </div>
 
         <div className="latest-news-items my-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Slice the newsItems array to show only the latest 3 items */}
-            {newsItems.slice(0, 3).map((item) => (
-              <div key={item._id} className="flex flex-col">
+            {newsItems.slice(0, 4).map((item) => (
+              <div key={item._id} className="w-full flex flex-col relative"> 
                 <img
                   src={item.image} // Assuming the news item has an image URL field
                   alt={item.title}
-                  className="w-full h-[240px] object-cover"
+                  className="w-full h-full object-contain"
                 />
                 <div
-                  className="news-card-content relative mt-[-2rem] mx-2 p-4 flex flex-col justify-between gap-6 shadow-[0_.2px_60px_0_rgba(217,202,250,0.1)] backdrop-blur-[65px]"
-                  style={{
-                    background:
-                      "linear-gradient(23deg, rgba(178, 198, 216, 0.4) 13.8%, rgba(255, 255, 255, 0.75) 96.31%)",
-                  }}
+                  className="news-card-content relative  py-4 flex flex-col justify-between gap-6"
                 >
                   <div className="flex items-center justify-between">
-                    <button className="bg-bluePrimary p-2 rounded-[22px] text-xs text-white font-pops">
+                    <button className="text-xs text-bluePrimary font-pops">
                       {item.category ? item.category : "No category"}
                     </button>
                     <div className="date">

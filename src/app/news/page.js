@@ -10,51 +10,51 @@ const News = () => {
   const [selectedTab, setSelectedTab] = useState("ALL");
   const [loading, setLoading] = useState(true);
 
-    // Subscription state and logic
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [showSuccess, setShowSuccess] = useState(false);
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      try {
-        const res = await fetch("/api/subscribe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
-  
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-  
-        const data = await res.json();
-  
-        if (data.msg && data.msg.length > 0) {
-          // Check for error messages from the API
-          setMessage(data.msg.join(". "));
-        } else if (data.success) {
-          setMessage(data.msg.join(". "));
-          setEmail(""); // Clear email input on successful subscription
-          setShowSuccess(true); // Show success message
-          setIsModalOpen(true); // Open the modal
-  
-          // Show modal and reload the page on modal close
-          setTimeout(() => {
-            setIsModalOpen(false);
-            window.location.reload(); // Reload the page after closing
-          }, 3000); // Reload after 3 seconds
-        } else {
-          setMessage("Failed to subscribe. Please try again later.");
-        }
-      } catch (error) {
-        console.error("Error subscribing:", error);
+  // Subscription state and logic
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await res.json();
+
+      if (data.msg && data.msg.length > 0) {
+        // Check for error messages from the API
+        setMessage(data.msg.join(". "));
+      } else if (data.success) {
+        setMessage(data.msg.join(". "));
+        setEmail(""); // Clear email input on successful subscription
+        setShowSuccess(true); // Show success message
+        setIsModalOpen(true); // Open the modal
+
+        // Show modal and reload the page on modal close
+        setTimeout(() => {
+          setIsModalOpen(false);
+          window.location.reload(); // Reload the page after closing
+        }, 3000); // Reload after 3 seconds
+      } else {
         setMessage("Failed to subscribe. Please try again later.");
       }
-    };
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      setMessage("Failed to subscribe. Please try again later.");
+    }
+  };
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -86,8 +86,9 @@ const News = () => {
             <h1 className="custom-h1 font-regular font-mont">News</h1>
             <h5 className="custom-h4 font-regular font-mont pt-20">
               Deep knowledge, thoughtful analysis, and our integrated commercial
-              and public sectors know-how feed our research and advice. Here&apos;s
-              how we apply our experience and foresight to support our clients.
+              and public sectors know-how feed our research and advice.
+              Here&apos;s how we apply our experience and foresight to support our
+              clients.
             </h5>
           </div>
 
@@ -98,36 +99,36 @@ const News = () => {
             </h6>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <div className="input-box border-b-2 border-bluePrimary flex flex-row gap-4 justify-between items-center py-2">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="custom-h6 p-0 placeholder-gryPrimary outline-none w-full text-bluePrimary shadow-none bg-transparent border-none box-border"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+              <div className="input-box border-b-2 border-bluePrimary flex flex-row gap-4 justify-between items-center py-2">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="custom-h6 p-0 placeholder-gryPrimary outline-none w-full text-bluePrimary shadow-none bg-transparent border-none box-border"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button
+                  type="submit"
+                  className="flex justify-center items-center"
+                  style={{ border: "none", background: "transparent" }}
+                >
+                  <Image
+                    src="/assets/icon/right.png"
+                    alt="Subscribe"
+                    width={26}
+                    height={26}
+                    className="w-[26px] object-cover cursor-pointer"
                   />
-                  <button
-                    type="submit"
-                    className="flex justify-center items-center"
-                    style={{ border: "none", background: "transparent" }}
-                  >
-                    <Image
-                      src="/assets/icon/right.png"
-                      alt="Subscribe"
-                      width={26}
-                      height={26}
-                      className="w-[26px] object-cover cursor-pointer"
-                    />
-                  </button>
-                </div>
-              </form>
+                </button>
+              </div>
+            </form>
 
-              {message && (
-                <p className="p-4 text-bluePrimary bg-red items-center text-center pl-4">
-                  {message}
-                </p>
-              )}
+            {message && (
+              <p className="p-4 text-bluePrimary bg-red items-center text-center pl-4">
+                {message}
+              </p>
+            )}
           </div>
         </div>
 
@@ -171,6 +172,13 @@ const News = () => {
             </button>
           </div>
 
+          {/* Error message displayed here */}
+          {filteredNewsItems.length === 0 && !loading && (
+            <div className="flex items-center justify-center w-full h-[200px] text-center font-pops">
+              No news available for the selected category.
+            </div>
+          )}
+
           <div className="news-items my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Show shimmer effect while loading */}
             {loading ? (
@@ -185,19 +193,16 @@ const News = () => {
                   </div>
                 </Shimmer>
               ))
-            ) : /* Display filtered news items */
-            filteredNewsItems.length > 0 ? (
+            ) : (
               filteredNewsItems.map((item) => (
                 <div key={item._id} className="flex flex-col gap-6 mb-12 border p-2">
                   <div className="relative image">
                     <img
                       src={item.image} // Assuming the news item has an image URL field
                       alt={item.title}
-                      // width={1000}
-                      he
                       className="w-full h-[240px] object-cover"
                     />
-                    <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem]  text-white w-full h-full">
+                    <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem] text-white w-full h-full">
                       <button className="p-1 w-[9rem] rounded-2xl bg-white text-black border font-pops text-sm font-medium">
                         {item.category ? item.category : "No category"}
                       </button>
@@ -220,8 +225,6 @@ const News = () => {
                   </div>
                 </div>
               ))
-            ) : (
-              <div>No news available for the selected category.</div>
             )}
           </div>
         </div>
@@ -230,4 +233,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default News

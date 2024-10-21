@@ -101,12 +101,11 @@ const NewsDetail = () => {
         </div>
 
         <div className="relative banner-image">
-          <Image
+          <img
             src={newsItem?.image}
             alt={newsItem?.title}
             className="w-full h-[22rem] lg:h-[32rem] object-cover"
-            width={1000}
-            height={600}
+          
           />
           <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
             <h6 className="custom-h6 font-mont font-regular text-white">
@@ -152,12 +151,10 @@ const NewsDetail = () => {
                   {latestNews.map((item) => (
                     <div key={item._id} className="flex flex-col gap-6 mb-12">
                       <div className="relative image">
-                        <Image
+                        <img
                           src={item.image} // Assuming the news item has an image URL field
                           alt={item.title}
                           className="w-full h-[240px] object-cover"
-                          width={1000}
-                          height={600}
                         />
                         <div className="absolute top-0 flex flex-col justify-between px-[1.5rem] pt-[1.5rem] pb-[3rem] bg-gradient-to-t from-black to-transparent text-white w-full h-full">
                           <button className="p-1 w-[10rem] rounded-2xl border font-pops text-sm font-medium">
