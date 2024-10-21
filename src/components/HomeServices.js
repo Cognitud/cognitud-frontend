@@ -6,7 +6,7 @@ import Image from "next/image";
 const ServiceItem = ({ imageSrc, altText, title, description }) => {
   return (
     <div className="services-image relative group business-vertical-inner">
-      <div className="business-vertical-inner-img overflow-hidden rounded relative">
+      <div className="business-vertical-inner-img overflow-hidden relative">
         {/* Image with hover animation triggered by parent container */}
         <Image
           src={imageSrc}
@@ -33,9 +33,9 @@ const ServiceItem = ({ imageSrc, altText, title, description }) => {
 
         {/* Content Box with Smooth Transition */}
         <div className="business-vertical-overlay-content-box text-white transition-all duration-500 ease-in-out opacity-0 transform translate-y-10 group-hover:opacity-100 group-hover:translate-y-[-30px] z-20">
-          <h5 className="custom-h5 transition-transform duration-500 ease-in-out">
+          <h6 className="custom-h6  font-pops transition-transform duration-500 ease-in-out">
             {title}
-          </h5>
+          </h6>
           <p className="text-p transition-transform duration-500 ease-in-out">
             {description}
           </p>
@@ -49,32 +49,32 @@ const HomeServices = () => {
   const services = [
     {
       imageSrc: "/assets/services/Artboard-4-min.png",
-      altText: "Home Services Banner",
-      title: "Title 1",
+      altText: "Climate Action & Net Zero",
+      title: "Climate Action & Net Zero",
       description: "Description goes here",
     },
     {
       imageSrc: "/assets/services/Artboard-5-min.png",
-      altText: "Home Services Banner",
-      title: "Title 2",
+      altText: "Responsible Investment",
+      title: "Responsible Investment",
       description: "Description goes here",
     },
     {
       imageSrc: "/assets/services/Artboard-6-min.png",
-      altText: "Home Services Banner",
-      title: "Title 3",
+      altText: "Sustainable Supply Chain",
+      title: "Sustainable Supply Chain",
       description: "Description goes here",
     },
     {
       imageSrc: "/assets/services/Artboard-1-min.png",
-      altText: "Home Services Banner",
-      title: "Title 4",
+      altText: "Circular Economy",
+      title: "Circular Economy",
       description: "Description goes here",
     },
     {
       imageSrc: "/assets/services/oil_and_gas-min.png",
-      altText: "Home Services Banner",
-      title: "Title 5",
+      altText: "Impact Assessment",
+      title: "Impact Assessment",
       description: "Description goes here",
     },
   ];
@@ -89,7 +89,7 @@ const HomeServices = () => {
               imageSrc={service.imageSrc}
               altText={service.altText}
               title={service.title}
-              description={service.description}
+              // description={service.description}
             />
           ))}
         </div>

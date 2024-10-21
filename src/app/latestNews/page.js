@@ -78,7 +78,7 @@ const LatestNews = () => {
                       {item.category ? item.category : "No category"}
                     </button>
                     <div className="date">
-                      <h4 className="text-xs font-regular font-pops text-lightBlue">
+                      <h4 className="text-xs font-regular font-pops text-greyPrimary">
                         {new Date(item.date).toLocaleDateString()}{" "}
                         {/* Date field */}
                       </h4>
