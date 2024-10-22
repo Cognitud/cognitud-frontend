@@ -162,12 +162,25 @@ export const solutionsData = [
     keyOutcomes: {
       title: "Key Outcomes",
       outcomes: [
-        "Strengthens ESG commitment: Boosts the sustainability standing of the business.",
-        "An edge over competitors: Gain an upper hand in the industry market.",
-        "Solidifies relationships: Creates loyalty amongst business stakeholders.",
-        "Long-term cost-savings: Saves huge operational costs in the long run.",
+        {
+          heading: "Strengthens ESG Commitment",
+          description: "Boosts the sustainability standing of the business."
+        },
+        {
+          heading: "An Edge Over Competitors",
+          description: "Gain an upper hand in the industry market."
+        },
+        {
+          heading: "Solidifies Relationships",
+          description: "Creates loyalty amongst business stakeholders."
+        },
+        {
+          heading: "Long-Term Cost-Savings",
+          description: "Saves huge operational costs in the long run."
+        }
       ],
-    },
+    }
+    
   },
   {
     id: 2,

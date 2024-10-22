@@ -61,17 +61,16 @@ const SolutionDetail = () => {
           <div className="container">
             <div className="heading">
               <h4 className="custom-h4 font-medium text-bluePrimary font-pops">
-                {solution.importance.title}
-              </h4>
-
-              <h6 className="custom-h6 font-pops pt-6">
                 {solution.importance.subHeading}
-              </h6>
+              </h4>
             </div>
 
             <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {solution.importance.points.map((points, index) => (
-                <div key={index} className="item py-4 border-t border-b border-greyPrimary">
+                <div
+                  key={index}
+                  className="item py-4 border-t border-b border-greyPrimary"
+                >
                   <p className="text-p font-pops font-regular">{points}</p>
                 </div>
               ))}
@@ -151,7 +150,7 @@ const SolutionDetail = () => {
               </h4>
             </div>
 
-            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {solution.approach.services.map((points, index) => (
                 <div key={index} className=" border-b border-greyPrimary py-8">
                   <h6 className="text-p text-black font-pops font-regular">
@@ -172,14 +171,22 @@ const SolutionDetail = () => {
             </div>
 
             <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {solution.keyOutcomes.outcomes.map((points , index) => (
-              <div key={index} className="item bg-lightGrey p-4">
-              <p className="text-p font-pops font-regular">
-                {points}
-              </p>
-            </div>
-              ))}
+              {solution.keyOutcomes.outcomes.map((points, index) => (
+                <div
+                  key={index}
+                  className="item bg-borderGrey p-4 group transition-all duration-300 ease-in-out"
+                >
+                  {/* Heading with hover effect to reduce font size */}
+                  <p className="text-p font-pops font-regular text-xl group-hover:text-sm transition-all duration-300 ease-in-out">
+                    {points.heading}
+                  </p>
 
+                  {/* Description hidden by default, visible on hover */}
+                  <p className=" pt-4 text-xl font-pops font-regular hidden group-hover:block transition-all duration-300 ease-in-out">
+                    {points.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
