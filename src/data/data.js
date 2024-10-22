@@ -35,8 +35,8 @@ export const jobsData = [
         },
       ],
     },
-    jobOverview:" The Business Head plays a critical role in the leadership and strategic direction of the organization. This individual is responsible for overseeing all aspects of the company's specific business/line of business, fostering growth, and ensuring the successful execution of the business strategy and operations. The Business Head collaborates closely with other senior executives, stakeholders, and the board of directors to achieve the company's goals and maintain its competitive edge."
-    ,
+    jobOverview:
+      " The Business Head plays a critical role in the leadership and strategic direction of the organization. This individual is responsible for overseeing all aspects of the company's specific business/line of business, fostering growth, and ensuring the successful execution of the business strategy and operations. The Business Head collaborates closely with other senior executives, stakeholders, and the board of directors to achieve the company's goals and maintain its competitive edge.",
     roleOverview: {
       title: "Business Head",
       description: `
@@ -83,7 +83,6 @@ export const jobsData = [
           "Provide mentorship and guidance to team members, promoting a culture of continuous learning.",
         ],
       },
-    
     },
     qualifications: {
       title: "Qualifications and Experience",
@@ -95,67 +94,132 @@ export const jobsData = [
         "Financial acumen and experience in budget management.",
         "Track record of driving growth and achieving business objectives.",
         "Experience in building and leading high-performing teams.",
-        "Familiarity with the industry or sector in which the company operates."
-      ]
-    }    
-  }
+        "Familiarity with the industry or sector in which the company operates.",
+      ],
+    },
+  },
 
   // Additional jobs can be added here
 ];
-
 
 // data.js
 
 export const solutionsData = [
   {
+    id: 1,
     title: "ESG Strategy & Transformation",
     slug: "esg-strategy-transformation",
-    para: "Procurement strategies for standalone solutions or full portfolios.",
+    para: "Cognitud helps organizations embed sustainability strategies into their business operations. Our sustainability consultants assist businesses in navigating ESG regulatory challenges, identifying vulnerabilities in their supply chain, and developing strategies to achieve climate goals.",
     image: "/assets/services/esg-sustainable.jpg",
+    whyCognitud:
+      "Cognitud helps organizations embed sustainability strategies into their business operations. Our sustainability consultants help businesses get familiar with ESG regulatory challenges, identify vulnerabilities in their supply chain network, and develop strategies to reach their climate goals. With our team of sustainability professionals, companies can get valuable insights into eco-friendly business tactics to further enhance their business decision-making.",
+    importance: {
+      title:
+        "Why are ESG Strategy and Transformation essential for businesses?",
+      subHeading:
+        "Enhance your reputation by committing to ESG strategy and transformation.",
+      points: [
+        "Proactive initiative towards predicting upcoming developments in changing market conditions, while addressing regulatory requirements and contributing to an equitable future, can bring long-term sustainability.",
+        "Trust and transparency with suppliers, employees, and other stakeholders build a sustainability-oriented reputation that boosts brand image and attracts investors.",
+        "Sustainability rating attracts stakeholders, helping achieve a competitive edge in the market and staying ahead of evolving market differentiators.",
+        "A holistic approach to sustainability upgrades the entire supply chain of a product, from raw materials to waste disposal, while identifying potential environmental risks.",
+      ],
+    },
+    implementationStrategy: {
+      title: "Implementation Strategy",
+      steps: [
+        {
+          title: "Core Assessment",
+          description: "Conduct a comprehensive analysis of a business’s sustainability performance throughout its supply chain and benchmark it against industry standards and best practices to determine its key ESG areas for improvement."
+        },
+        {
+          title: "Outlining Strategy",
+          description: "Set clear measurable, achievable, and time-bound ESG goals that align with the business’s mission and values. Prioritizing these goals ensures a well planned out strategy to address the identified sustainability challenges."
+        },
+        {
+          title: "Implementation",
+          description: "Distribute resources like technology and budget across different spheres and trace the progress using key performance indicators while modifying strategies as necessary to ensure better output."
+        },
+        {
+          title: "Reporting",
+          description: "Analyze the outcome against the business goals and key performance indicators, determine areas that require further improvement, and demonstrate accountability to stakeholders."
+        }
+      ]
+    },
+    approach: {
+      title: "Our Approach",
+      services: [
+        "Benchmarking and Maturity Assessments",
+        "ESG Governance, Metrics, Reporting, and Implementation",
+        "Reporting Standards Gap Analysis",
+        "Materiality/Double Materiality Assessments",
+        "ESG Ratings",
+        "Training and Capacity Building",
+        "Internal Assurance Readiness",
+        "ESG Policy",
+      ],
+    },
+    keyOutcomes: {
+      title: "Key Outcomes",
+      outcomes: [
+        "Strengthens ESG commitment: Boosts the sustainability standing of the business.",
+        "An edge over competitors: Gain an upper hand in the industry market.",
+        "Solidifies relationships: Creates loyalty amongst business stakeholders.",
+        "Long-term cost-savings: Saves huge operational costs in the long run.",
+      ],
+    },
   },
   {
+    id: 2,
     title: "Climate Action & Net Zero",
     slug: "climate-action-net-zero",
     para: "Strategies for achieving net-zero emissions and combating climate change.",
     image: "/assets/services/climate-net-zero-banner.jpg",
   },
   {
+    id: 3,
     title: "Responsible Investment",
     slug: "responsible-investment",
     para: "Investment strategies that prioritize ethical and sustainable practices.",
     image: "/assets/services/ehs-management-new-banner.webp",
   },
   {
+    id: 4,
     title: "Supply Chain and Operations",
     slug: "supply-chain-and-operations",
     para: "Optimizing supply chain processes for sustainability and efficiency.",
     image: "/assets/services/supply-chain-banner.jpg",
   },
   {
+    id: 5,
     title: "Circular Economy",
     slug: "circular-economy",
     para: "Strategies to minimize waste and maximize resource efficiency.",
     image: "/assets/services/circular-economy-banner.jpg",
   },
   {
+    id: 6,
     title: "Data & Digital",
     slug: "data-and-digital",
     para: "Leveraging technology and data for sustainable solutions.",
     image: "/assets/services/data-and-digital-banner.webp",
   },
   {
+    id: 7,
     title: "Impact Assessment",
     slug: "impact-assessment",
     para: "Evaluating the social and environmental impact of projects.",
     image: "/assets/services/training-header.jpg",
   },
   {
+    id: 8,
     title: "Due Diligence",
     slug: "due-diligence",
     para: "Thorough investigations to ensure compliance and sustainability.",
     image: "/assets/services/product-stewardship-new-banner.webp",
   },
   {
+    id: 9,
     title: "CSR",
     slug: "csr",
     para: "Corporate social responsibility initiatives to benefit communities.",

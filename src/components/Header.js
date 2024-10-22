@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { solutionsData } from "@/data/data";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -62,20 +63,6 @@ const Header = () => {
     { id: 6, link: "contact us", url: "/contact" },
   ];
 
-  const solutionsSubMenu = [
-    {
-      id: 1,
-      title: "ESG Strategy & Transformation",
-      url: "/solutions/sub-solution-1",
-    },
-    {
-      id: 2,
-      title: "Climate Action & Net Zero",
-      url: "/solutions/sub-solution-2",
-    },
-    // Add more solutions here...
-  ];
-
   const toggleNav = () => {
     setNav(!nav);
     setShowMobileSubMenu(false);
@@ -87,6 +74,12 @@ const Header = () => {
 
   const toggleMobileSubMenu = () => {
     setShowMobileSubMenu((prev) => !prev);
+  };
+
+  const closeAllMenus = () => {
+    setShowSubMenu(false);
+    setShowMobileSubMenu(false);
+    setNav(false);
   };
 
   const isInsightsOrNewsPage =
@@ -273,32 +266,58 @@ const Header = () => {
                     Offering unparalleled depth and breadth of expertise.
                   </h4>
                 </div>
-                <div className="read-more-btn flex items-center gap-4 border rounded-lg border-bluePrimary w-[8rem] flex items-center justify-center p-2">
-                  <button className="font-medium text-bluePrimary font-pops text-sm ">
-                    Explore
-                  </button>
-                  <div className="image">
-                    <Image
-                      src="/assets/icon/arrow-blue-link.svg"
-                      alt="Read More"
-                      width={20}
-                      height={20}
-                      className="w-[20px] h-[20px] object-cover"
-                    />
+                <Link href="/solutions">
+                  <div
+                    className="read-more-btn flex items-center gap-4 border rounded-lg border-bluePrimary w-[8rem] flex items-center justify-center p-2"
+                    onClick={closeAllMenus}
+                  >
+                    <button className="font-medium text-bluePrimary font-pops text-sm ">
+                      Explore
+                    </button>
+                    <div className="image">
+                      <Image
+                        src="/assets/icon/arrow-blue-link.svg"
+                        alt="Read More"
+                        width={20}
+                        height={20}
+                        className="w-[20px] h-[20px] object-cover"
+                      />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
 
               <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-                {solutionsSubMenu.map(({ id, title, url }) => (
-                  <Link key={id} href={url} passHref>
-                    <li className="font-pops font-regular text-p capitalize hover:scale-105 duration-200 transition-transform">
+                {solutionsData.map(({ id, title, slug }) => (
+                  <Link key={id} href={`/solutions/${slug}`} passHref>
+                    <li
+                      className="font-pops font-regular text-p capitalize hover:scale-105 duration-200 transition-transform"
+                      onClick={closeAllMenus}
+                    >
                       {title}
                     </li>
                   </Link>
                 ))}
               </div>
             </div>
+          </div>
+        </ul>
+      )}
+
+      {/* Mobile Submenu for Solutions */}
+      {showMobileSubMenu && (
+        <ul className="fixed top-[100px] left-0 w-full h-auto bg-white shadow-lg">
+          <div className="container flex flex-wrap">
+            {solutionsData.map(({ id, title, slug }) => (
+              <Link key={id} href={`/solutions/${slug}`} passHref>
+                <li
+                  className="font-pops font-regular text-p capitalize hover:scale-105 duration-200 transition-transform"
+                  onClick={closeAllMenus}
+                >
+                  {title}
+                </li>
+              </Link>
+            ))}
           </div>
         </ul>
       )}

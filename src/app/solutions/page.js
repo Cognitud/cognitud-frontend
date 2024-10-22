@@ -169,7 +169,7 @@ const Solutions = () => {
           </div>
         </div>
 
-        <div className="cognitud-impact bg-lightBlue w-full h-auto">
+        <div className="cognitud-impact bg-lightGrey w-full h-auto">
           <div className="container">
             <div className="heading w-full pt-20">
               <h3 className="custom-h4 font-semibold text-bluePrimary font-mont">
