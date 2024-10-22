@@ -6,6 +6,8 @@ import Image from "next/image";
 const HomeCareer = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const [isHovered, setIsHovered] = useState(false); // Step 1: State for hover
+
   const testimonials = [
     "Cognitud offers a culture of diversity and equal opportunity, where I can contribute my best knowing each and every voice matters and fuels our success.",
     "At Cognitud, I'm empowered to create an impact while being part of a team that values diversity and innovation.",
@@ -52,7 +54,7 @@ const HomeCareer = () => {
 
           {/* Right Section: Testimonial Slider and Join Us */}
           <div className="bg-[#f1f1f1] flex flex-col relative culture-section">
-            <div className="p-8 relative flex gap-8 flex-col">
+          <div className="p-8 relative flex gap-8 flex-col">
               <div className="flex gap-4 justify-end">
                 {testimonials.map((_, index) => (
                   <div
@@ -78,15 +80,31 @@ const HomeCareer = () => {
               </p>
 
               <div className="button">
-                <button className="flex items-center justify-between p-4 w-[12rem] border border-bluePrimary">
-                  <h4 className="text-p text-bluePrimary font-pops">Join Our Team</h4>
-                  <Image
-                    src="/assets/icon/arrow-blue-link.svg"
-                    alt="Inert Comma Icon"
-                    width={24}
-                    height={24}
-                    className="w-[1.5rem] h-auto object-cover"
-                  />
+                <button
+                  className="flex items-center justify-between w-[12rem]"
+                  onMouseEnter={() => setIsHovered(true)} // Step 2: Set hover state to true
+                  onMouseLeave={() => setIsHovered(false)} // Set hover state to false
+                >
+                  <h4 className="text-p text-bluePrimary font-pops font-semibold">
+                    Join Our Team
+                  </h4>
+                  <div
+                    className={`border border-bluePrimary rounded-[50%] p-4 transition-all duration-300 ease-in-out ${
+                      isHovered ? "bg-bluePrimary" : "bg-transparent"
+                    }`}
+                  >
+                    <Image
+                      src={
+                        isHovered
+                          ? "/assets/icon/white-cognitud-arrow.svg" // Use white arrow when hovered
+                          : "/assets/icon/arrow-blue-link.svg" // Use blue arrow otherwise
+                      }
+                      alt="Read More"
+                      width={24}
+                      height={24}
+                      className="w-[24px] h-[24px] object-cover transition duration-300 ease-in-out"
+                    />
+                  </div>
                 </button>
               </div>
             </div>
