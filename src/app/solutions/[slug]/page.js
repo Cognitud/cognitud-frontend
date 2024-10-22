@@ -164,7 +164,7 @@ const SolutionDetail = () => {
                   </h6>
 
                   {/* Animated Border Effect */}
-                  <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-bluePrimary transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
+                  <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-blueMedium transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
                   <div className="absolute left-0 right-0 bottom-0 border-b-[3px] border-borderGrey z-0"></div>
                 </div>
               ))}
@@ -184,10 +184,10 @@ const SolutionDetail = () => {
               {solution.keyOutcomes.outcomes.map((points, index) => (
                 <div
                   key={index}
-                  className="item border-[2px] border-borderGrey p-4 group transition-all duration-300 ease-in-out"
+                  className="item border-[3px] border-borderGrey p-4 group transition-all duration-300 ease-in-out"
                 >
                   {/* Heading with hover effect to reduce font size */}
-                  <p className="text-p font-pops font-regular text-xl group-hover:text-p group-hover:font-semibold transition-all duration-300 ease-in-out">
+                  <p className="text-p font-pops font-semibold text-xl group-hover:text-p  transition-all duration-300 ease-in-out">
                     {points.heading}
                   </p>
 
