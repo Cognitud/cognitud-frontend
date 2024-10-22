@@ -60,7 +60,7 @@ const SolutionDetail = () => {
         <div className="why-business my-20">
           <div className="container">
             <div className="heading">
-              <h4 className="custom-h4 font-medium text-bluePrimary font-pops">
+              <h4 className="custom-h5 font-medium text-bluePrimary font-pops">
                 {solution.importance.subHeading}
               </h4>
             </div>
@@ -116,10 +116,10 @@ const SolutionDetail = () => {
           </div>
         </div>
 
-        <div className="strategy my-20 bg-bluePrimary">
+        <div className="strategy bg-bluePrimary">
           <div className="container">
-            <div className="heading py-12">
-              <h4 className="custom-h4 font-medium text-white font-pops">
+            <div className="heading pt-12">
+              <h4 className="custom-h5 font-medium text-white font-pops">
                 {solution.implementationStrategy.title}
               </h4>
             </div>
@@ -145,7 +145,7 @@ const SolutionDetail = () => {
         <div className="our-approach my-20">
           <div className="container">
             <div className="heading">
-              <h4 className="custom-h4 font-medium text-bluePrimary font-pops">
+              <h4 className="custom-h5 font-medium text-bluePrimary font-pops">
                 {solution.approach.title}
               </h4>
             </div>
@@ -170,7 +170,7 @@ const SolutionDetail = () => {
         <div className="outcomes my-20">
           <div className="container">
             <div className="heading">
-              <h4 className="custom-h4 font-medium text-bluePrimary font-pops">
+              <h4 className="custom-h5 font-medium text-bluePrimary font-pops">
                 {solution.keyOutcomes.title}
               </h4>
             </div>
@@ -179,7 +179,7 @@ const SolutionDetail = () => {
               {solution.keyOutcomes.outcomes.map((points, index) => (
                 <div
                   key={index}
-                  className="item border border-borderGrey p-4 group transition-all duration-300 ease-in-out"
+                  className="item border-[2px] border-borderGrey p-4 group transition-all duration-300 ease-in-out"
                 >
                   {/* Heading with hover effect to reduce font size */}
                   <p className="text-p font-pops font-regular text-xl group-hover:text-p group-hover:font-semibold transition-all duration-300 ease-in-out">
