@@ -154,13 +154,18 @@ const SolutionDetail = () => {
               {solution.approach.services.map((points, index) => (
                 <div
                   key={index}
-                  className={`border-b border-greyPrimary py-8 ${
+                  className={`relative group  py-8 transition-transform duration-300 ease-in-out ${
                     index !== solution.approach.services.length - 1 ? "" : ""
                   }`}
                 >
+                  {/* Content */}
                   <h6 className="text-p text-black font-pops font-regular">
                     {points}
                   </h6>
+
+                  {/* Animated Border Effect */}
+                  <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-bluePrimary transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
+                  <div className="absolute left-0 right-0 bottom-0 border-b-[3px] border-borderGrey z-0"></div>
                 </div>
               ))}
             </div>
