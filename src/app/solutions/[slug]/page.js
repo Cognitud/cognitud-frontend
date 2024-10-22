@@ -71,7 +71,7 @@ const SolutionDetail = () => {
 
             <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {solution.importance.points.map((points, index) => (
-                <div className="item py-4 border-t border-b border-greyPrimary">
+                <div key={index} className="item py-4 border-t border-b border-greyPrimary">
                   <p className="text-p font-pops font-regular">{points}</p>
                 </div>
               ))}
@@ -153,7 +153,7 @@ const SolutionDetail = () => {
 
             <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {solution.approach.services.map((points, index) => (
-                <div className=" border-b border-greyPrimary py-8">
+                <div key={index} className=" border-b border-greyPrimary py-8">
                   <h6 className="text-p text-black font-pops font-regular">
                     {points}
                   </h6>
