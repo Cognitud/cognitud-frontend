@@ -150,7 +150,7 @@ const SolutionDetail = () => {
               </h4>
             </div>
 
-            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {solution.approach.services.map((points, index) => (
                 <div key={index} className=" border-b border-greyPrimary py-8">
                   <h6 className="text-p text-black font-pops font-regular">
