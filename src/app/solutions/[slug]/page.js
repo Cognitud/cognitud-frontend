@@ -150,9 +150,14 @@ const SolutionDetail = () => {
               </h4>
             </div>
 
-            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-12">
               {solution.approach.services.map((points, index) => (
-                <div key={index} className=" border-b border-greyPrimary py-8">
+                <div
+                  key={index}
+                  className={`border-b border-greyPrimary py-8 ${
+                    index !== solution.approach.services.length - 1 ? "" : ""
+                  }`}
+                >
                   <h6 className="text-p text-black font-pops font-regular">
                     {points}
                   </h6>
@@ -174,15 +179,15 @@ const SolutionDetail = () => {
               {solution.keyOutcomes.outcomes.map((points, index) => (
                 <div
                   key={index}
-                  className="item bg-borderGrey p-4 group transition-all duration-300 ease-in-out"
+                  className="item border border-borderGrey p-4 group transition-all duration-300 ease-in-out"
                 >
                   {/* Heading with hover effect to reduce font size */}
-                  <p className="text-p font-pops font-regular text-xl group-hover:text-sm transition-all duration-300 ease-in-out">
+                  <p className="text-p font-pops font-regular text-xl group-hover:text-p group-hover:font-semibold transition-all duration-300 ease-in-out">
                     {points.heading}
                   </p>
 
-                  {/* Description hidden by default, visible on hover */}
-                  <p className=" pt-4 text-xl font-pops font-regular hidden group-hover:block transition-all duration-300 ease-in-out">
+                  {/* Description initially hidden, shown on hover */}
+                  <p className="pt-4 text-p font-pops font-regular opacity-0 group-hover:opacity-100 group-hover:mt-2 transition-opacity duration-300 ease-in-out">
                     {points.description}
                   </p>
                 </div>
