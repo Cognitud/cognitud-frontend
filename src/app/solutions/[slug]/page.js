@@ -129,7 +129,7 @@ const SolutionDetail = () => {
               {solution.implementationStrategy.steps.map((steps, index) => (
                 <div
                   key={index}
-                  className="item bg-white p-4 flex flex-col gap-4"
+                  className="item bg-white px-4 py-8 flex flex-col gap-4"
                 >
                   <h6 className="custom-h6 font-pops font-regular font-medium">
                     {steps.title}
