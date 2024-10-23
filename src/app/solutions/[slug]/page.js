@@ -36,7 +36,7 @@ const SolutionDetail = () => {
             alt="Logo"
             width={1000}
             height={600}
-            className="w-full cursor-pointer h-[32rem] object-cover"
+            className="w-full cursor-pointer h-[80svh] object-cover"
           />
           <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
             <h6 className="text-p font-pops font-medium text-white">
@@ -66,13 +66,20 @@ const SolutionDetail = () => {
               </h4>
             </div>
 
-            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
               {solution.importance.points.map((points, index) => (
-                <div
-                  key={index}
-                  className="item py-4 border-t border-b border-greyPrimary"
-                >
-                  <p className="text-p font-pops font-regular">{points}</p>
+                <div key={index} className="flex flex-col md:flex-row">
+                  <div className="item py-4  border-greyPrimary flex-1">
+                    <p className="text-p font-pops font-regular">{points}</p>
+                  </div>
+                  {index < solution.importance.points.length - 1 && (
+                    <div
+                      className="flex items-center justify-center w-full md:w-[2rem]"
+                      // style={{ width: "3rem", height: "100%" }}
+                    >
+                      <div className="border-[1px] border-greyPrimary w-full md:w-[2px] h-full"></div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -132,9 +139,7 @@ const SolutionDetail = () => {
                   className="item bg-white px-4 py-8 flex flex-col gap-4 group"
                 >
                   {/* Apply hover effect to this title */}
-                  <h6
-                    className="custom-h6 font-pops font-regular font-medium z-10 group-hover:text-logoBlue group-hover:font-semibold"
-                  >
+                  <h6 className="custom-h6 font-pops font-semibold font-medium z-10 group-hover:text-logoBlue">
                     {steps.title}
                   </h6>
                   <p className="text-p font-pops font-regular">
