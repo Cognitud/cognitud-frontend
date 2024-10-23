@@ -188,7 +188,7 @@ const CareerPage = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
-              <div className="bg-blueMedium p-12 h-auto flex flex-col gap-16">
+              <div className="bg-logoBlue p-12 h-auto flex flex-col gap-16">
                 <div className="flex flex-col lg:flex-row gap-6 justify-between">
                   <div className="image">
                     <Image

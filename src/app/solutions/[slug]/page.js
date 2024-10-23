@@ -6,6 +6,7 @@ import Image from "next/image"; // Ensure you import Image from Next.js
 import { solutionsData } from "@/data/data"; // Adjust the import as needed
 import Link from "next/link";
 import FeaturedInsights from "@/app/featuredInsights/page";
+import styles from "@/app/solutions/Services.module.css";
 
 const SolutionDetail = () => {
   const { slug } = useParams(); // Get the slug from the params
@@ -31,17 +32,17 @@ const SolutionDetail = () => {
 
         <div className="relative banner-image">
           <Image
-            src="/assets/services/climate-net-zero-banner.jpg"
+            src={solution.image}
             alt="Logo"
             width={1000}
             height={600}
-            className="w-full cursor-pointer h-full object-cover"
+            className="w-full cursor-pointer h-[32rem] object-cover"
           />
           <div className="absolute top-0 left-0 px-8 lg:px-20 py-32 bg-gradient-to-t from-black to-transparent text-white w-full h-full">
-            <h6 className="text-p font-mont font-regular text-white">
+            <h6 className="text-p font-pops font-medium text-white">
               Solutions
             </h6>
-            <h4 className="custom-h6 w-full lg:w-[60%] font-mont font-regular mt-4">
+            <h4 className="custom-h6 w-full lg:w-[60%] font-pops font-regular mt-4">
               {solution.para}
             </h4>
           </div>
@@ -49,8 +50,8 @@ const SolutionDetail = () => {
 
         <div className="why-cognitud-detail-para my-20">
           <div className="container">
-            <div className="flex items-center justify-center w-full flex-col gap-6">
-              <h6 className="custom-h6 font-pops font-regular">
+            <div className="w-full gap-6">
+              <h6 className="custom-h6 font-pops font-regular lg:w-[80%] w-full">
                 {solution.whyCognitud}
               </h6>
             </div>
@@ -128,9 +129,12 @@ const SolutionDetail = () => {
               {solution.implementationStrategy.steps.map((steps, index) => (
                 <div
                   key={index}
-                  className="item bg-white px-4 py-8 flex flex-col gap-4"
+                  className="item bg-white px-4 py-8 flex flex-col gap-4 group"
                 >
-                  <h6 className="custom-h6 font-pops font-regular font-medium">
+                  {/* Apply hover effect to this title */}
+                  <h6
+                    className="custom-h6 font-pops font-regular font-medium z-10 group-hover:text-logoBlue group-hover:font-semibold"
+                  >
                     {steps.title}
                   </h6>
                   <p className="text-p font-pops font-regular">
@@ -164,7 +168,7 @@ const SolutionDetail = () => {
                   </h6>
 
                   {/* Animated Border Effect */}
-                  <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-blueMedium transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
+                  <div className="absolute left-0 right-0 bottom-0 h-[3px] bg-logoBlue transform scale-x-0 transition-transform duration-1000 ease-in-out group-hover:scale-x-100 origin-left z-10"></div>
                   <div className="absolute left-0 right-0 bottom-0 border-b-[3px] border-borderGrey z-0"></div>
                 </div>
               ))}

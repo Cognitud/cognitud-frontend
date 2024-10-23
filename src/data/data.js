@@ -110,7 +110,7 @@ export const solutionsData = [
     title: "ESG Strategy & Transformation",
     slug: "esg-strategy-transformation",
     para: "Cognitud helps organizations embed sustainability strategies into their business operations. Our sustainability consultants assist businesses in navigating ESG regulatory challenges, identifying vulnerabilities in their supply chain, and developing strategies to achieve climate goals.",
-    image: "/assets/services/esg-sustainable.jpg",
+    image: "/assets/about/cognitud-slider-1.jpg",
     whyCognitud:
       "Cognitud helps organizations embed sustainability strategies into their business operations. Our sustainability consultants help businesses get familiar with ESG regulatory challenges, identify vulnerabilities in their supply chain network, and develop strategies to reach their climate goals. With our team of sustainability professionals, companies can get valuable insights into eco-friendly business tactics to further enhance their business decision-making.",
     importance: {
