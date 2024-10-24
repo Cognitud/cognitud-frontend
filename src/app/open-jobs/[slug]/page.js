@@ -82,7 +82,7 @@ const OpenJobDetail = ({ params }) => {
                 {job.capabilities.map((capability, index) => (
                   <li
                     key={index}
-                    className="flex items-center custom-h6 custom-list-item font-regular font-pops text-bluePrimary pl-12"
+                    className="flex items-center text-p font-pops custom-list-item font-regular text-bluePrimary pl-6"
                   >
                     {capability}
                   </li>
@@ -101,21 +101,32 @@ const OpenJobDetail = ({ params }) => {
             </div>
           </div>
 
+
           <div className="your-team my-12 flex flex-col">
             <h4 className="custom-h4 font-medium font-pops text-bluePrimary cursor-pointer">
               Your Team
             </h4>
 
-            <div className="team-list pt-6">
+            <div className="yourTeam-para pt-6">
+              <h6>{job.yourTeam}</h6>
+            </div>
+          </div>
+
+          <div className="your-job my-12 flex flex-col">
+            <h4 className="custom-h4 font-medium font-pops text-bluePrimary cursor-pointer">
+              Your Job
+            </h4>
+
+            <div className="job-list pt-6">
               {job.yourJob.map((jobResponsibility, index) => (
                 <div key={index} className="flex flex-col gap-6">
                   <h4>{jobResponsibility.title}</h4>{" "}
                   {/* Displaying each title */}
-                  <ul className="flex flex-col gap-6">
+                  <ul className="flex flex-col gap-8">
                     {jobResponsibility.points.map((point, idx) => (
                       <li
                         key={idx}
-                        className="flex flex-col gap-2 custom-list-item pl-6"
+                        className="flex flex-col gap-2 text-p font-pops  custom-list-item pl-6"
                       >
                         {point}
                       </li>

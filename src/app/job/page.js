@@ -35,38 +35,53 @@ const Job = () => {
         <div className="container">
           {/* Dynamically render job data */}
           <div className="job-item w-full h-auto flex flex-col gap-12">
-            {jobsData.map((job) => (
-              <div
-                className="border border-greyPrimary w-full h-auto p-6 flex flex-col gap-8"
-                key={job.id}
-              >
-                <button className="py-2 px-4 border border-bluePrimary text-sm  font-pops w-[10rem] flex justify-center items-center ">
-                  {job.category}
-                </button>
+          {jobsData.map((job) => (
+                <div
+                  className="border border-borderGrey w-full h-auto p-6 flex flex-col gap-6"
+                  key={job.id}
+                >
+                  <div className="flex">
+                    <button className="py-1 px-2 rounded-xl border border-bluePrimary text-sm w-auto font-pops flex justify-center items-center ">
+                      {job.category}
+                    </button>
+                  </div>
+                  {/* Wrap the job title with Link */}
+                  <Link href={`/open-jobs/${job.slug}`}>
+                    <h4 className="custom-h5 font-pops font-semibold text-bluePrimary cursor-pointer">
+                      {job.title}
+                    </h4>
+                  </Link>
 
-                {/* Wrap the job title with Link */}
-                <Link href={`/job/${job.slug}`}>
-                  <h4 className="custom-h4 font-pops font-medium text-bluePrimary cursor-pointer">
-                    {job.title}
-                  </h4>
-                </Link>
+                  <p className="text-p font-pops news-title">{job.jobOverview}</p>
+                  <div className="optional-detail flex flex-col gap-4">
+                    <div className="flex items-center">
+                      <Image
+                        src="/assets/icon/job_experience.svg"
+                        alt="Experience Icon"
+                        width={30}
+                        height={30}
+                        className="w-auto h-auto"
+                      />
+                      <h6 className="pl-4 text-sm font-pops text-bluePrimary font-medium">
+                        Experience: {job.experience}
+                      </h6>
+                    </div>
 
-                <p className="text-p font-pops">{job.jobOverview}</p>
-
-                <div className="flex gap-6 items-center">
-                  <Image
-                    src="/assets/icon/location.svg"
-                    alt="Location Icon"
-                    width={30}
-                    height={30}
-                    className="w-auto h-auto"
-                  />
-                  <h6 className="text-sm font-pops text-bluePrimary font-medium">
-                    {job.locations.join(" | ")}
-                  </h6>
+                    <div className="flex items-center">
+                      <Image
+                        src="/assets/icon/location.svg"
+                        alt="Location Icon"
+                        width={30}
+                        height={30}
+                        className="w-auto h-auto"
+                      />
+                      <h6 className="pl-4 text-sm font-pops text-bluePrimary font-medium">
+                        {job.locations.join(" | ")}
+                      </h6>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

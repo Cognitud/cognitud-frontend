@@ -172,7 +172,7 @@ const SolutionDetail = () => {
         <div className="why-cognitud-detail-para my-20">
           <div className="container">
             <div className="w-full gap-6">
-              <h6 className="custom-h6 font-pops font-regular lg:w-[80%] w-full">
+              <h6 className="custom-h6 font-pops font-regular lg:w-[70%] w-full">
                 {solution.whyCognitud}
               </h6>
             </div>

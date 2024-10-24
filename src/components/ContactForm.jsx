@@ -79,9 +79,9 @@ export default function ContactForm() {
       {showSuccessPopup && <SuccessPopup onClose={handleClosePopup} />}
       <div className="">
         <form onSubmit={handleSubmit} className="space-y-8 mt-8">
-          {renderInputField("fullname", "Full Name")}
-          {renderInputField("email", "Email", "email", "")}
-          {renderInputField("companyName", "Company Name")}
+          {renderInputField("fullname", "Full Name","fullname" , "Full Name")}
+          {renderInputField("email", "Email", "email", "xyz@gmail.com")}
+          {renderInputField("companyName", "Company Name" , "companyName", "Company Name")}
           {renderInputField(
             "phoneNumber",
             "Phone Number",

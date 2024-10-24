@@ -17,12 +17,14 @@ const Map = ({ locations }) => {
   const mapRef = useRef();
 
   useEffect(() => {
-    // Check if Leaflet is loaded and only then set the icons
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: "/assets/icon/location-map.svg",
-      iconUrl: "/assets/icon/location-map.svg",
-      shadowUrl: undefined,
-    });
+    // Only merge options if the map instance is already initialized
+    if (mapRef.current) {
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: "/assets/icon/location-map.svg",
+        iconUrl: "/assets/icon/location-map.svg",
+        shadowUrl: undefined,
+      });
+    }
   }, []);
 
   return (
@@ -36,7 +38,14 @@ const Map = ({ locations }) => {
       doubleClickZoom={false}
       keyboard={false}
       className="leaflet-container"
-      whenCreated={(mapInstance) => (mapRef.current = mapInstance)}
+      whenCreated={(mapInstance) => {
+        mapRef.current = mapInstance;
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: "/assets/icon/location-map.svg",
+          iconUrl: "/assets/icon/location-map.svg",
+          shadowUrl: undefined,
+        });
+      }}
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png"
@@ -52,10 +61,10 @@ const Map = ({ locations }) => {
                 width={32}
                 height={32}
               />
-              <h4 className="custom-h6 font-pops text-bluePrimary font-medium">
+              <h4 className="custom-h5 font-pops text-bluePrimary font-medium">
                 {location.name}
               </h4>
-              <p className="text-p font-pops">
+              <p className="custom-h6 font-pops">
                 {location.address.map((line, index) => (
                   <React.Fragment key={index}>
                     {line}
