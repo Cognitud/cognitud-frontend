@@ -89,6 +89,7 @@ const Header = () => {
     pathname === "/contact" ||
     pathname === "/news" ||
     pathname.startsWith("/job/") ||
+    pathname.startsWith("/open-jobs/") ||
     pathname.startsWith("/insights/") ||
     pathname.startsWith("/news/") ||
     pathname.startsWith("/solutions/");
@@ -136,7 +137,7 @@ const Header = () => {
               alt="Logo"
               width={1000}
               height={600}
-              className="w-full cursor-pointer h-auto"
+              className="w-full cursor-pointer h-[2rem]"
             />
           </Link>
         </div>

@@ -75,8 +75,8 @@ const Solutions = () => {
               Solutions
             </h6>
             <h4 className="custom-h4 w-full lg:w-[60%] font-mont font-regular mt-4">
-              Cognitud is shaping a sustainable future with the world&apos;s leading
-              organizations
+              Cognitud is shaping a sustainable future with the world&apos;s
+              leading organizations
             </h4>
           </div>
         </div>
@@ -111,28 +111,35 @@ const Solutions = () => {
             </div>
 
             <div className="types-sections py-12">
-              <div className="grid grid-cols-1 md:grid-col-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {solutionsData.map((solution, index) => (
                   <div
                     key={index}
-                    className="item flex flex-col gap-6 duration-500 ease-in-out"
+                    className="item flex flex-col gap-6 duration-500 ease-in-out relative"
                   >
-                    <Image
-                      src={solution.image}
-                      alt={solution.title}
-                      width={1000}
-                      height={600}
-                      className="w-full h-[12rem] object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
-                    />
-                    <div className="info">
-                      <Link href={`/solutions/${solution.slug}`}>
+                    {/* Image with overlay */}
+                    <div className="relative w-full h-[14rem] overflow-hidden rounded-lg">
+                      <Image
+                        src={solution.image}
+                        alt={solution.title}
+                        width={1000}
+                        height={600}
+                        className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-black opacity-50 hover:opacity-70 transition-opacity duration-500 ease-in-out"></div>
+                    </div>
+
+                    {/* Info section */}
+                    <div className="info absolute top-1/2 left-1/2 flex items-center flex-col transform -translate-x-1/2 -translate-y-1/2 w-[70%]">
+                      <Link href={`/solutions/${solution.slug}`} >
                         <h6
-                          className={`relative z-10 font-pops font-medium cursor-pointer ${styles.serviceHeading} `}
+                          className="border-white border rounded-lg text-center p-2 text-white relative z-10 font-pops font-medium cursor-pointer"
                         >
                           {solution.title}
                         </h6>
                       </Link>
-                      <h6 className="text-sm font-pops font-regular pt-2">
+                      <h6 className="text-sm font-pops font-regular pt-8 text-white text-center">
                         {solution.para}
                       </h6>
                     </div>
